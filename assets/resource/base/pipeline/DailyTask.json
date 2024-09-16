@@ -12,6 +12,7 @@
         "recognition": "OCR",
         "expected": "助手模式",
         "action": "Click",
+        "post_delay": 1000,
         "next": [
             "Sub_receive",
             "Sub_Regulator",
@@ -85,9 +86,35 @@
         "expected": "有友情点可以领取",
         "action": "Click",
         "next": [
+            "FriendFlag",
+            "AllFriendSend",
             "Sub_AllReceive",
-            "Sub_Friend",
-            "AllFriendSend"
+            "Sub_Friend"
+        ]
+    },
+    "FriendFlag": {
+        "recognition": "ColorMatch",
+        "roi": [
+            1022,
+            593,
+            33,
+            30
+        ],
+        "method": 4,
+        "lower": [
+            95,
+            94,
+            95
+        ],
+        "upper": [
+            103,
+            103,
+            103
+        ],
+        "count": 360,
+        "connected": false,
+        "next": [
+            "Back"
         ]
     },
     "AllFriendSend": {
@@ -389,13 +416,13 @@
         ]
     },
     "SendMissonFull": {
-        "recognition": "OCR",
-        "expected": "3",
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/SendMissonFull.png",
         "roi": [
-            92,
-            393,
-            26,
-            45
+            45,
+            392,
+            93,
+            47
         ],
         "next": [
             "Back",
@@ -416,6 +443,7 @@
         "template": "TaskBasics/AllSend.png",
         "action": "Click",
         "next": [
+            "SendMissonFull",
             "AllSend",
             "Back"
         ]
@@ -506,6 +534,12 @@
         "is_sub": true,
         "recognition": "OCR",
         "expected": "获得物资",
+        "roi": [
+            218,
+            17,
+            868,
+            378
+        ],
         "action": "Click",
         "target": [
             1109,
