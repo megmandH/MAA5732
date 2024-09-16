@@ -1,0 +1,8 @@
+{
+    "行万里路": {
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected": "那管理局教会了你什么",
+        "action": "Click"
+    }
+}

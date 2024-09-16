@@ -1,0 +1,96 @@
+{
+    "Start5732": {
+        "next": [
+            "HomeFlag",
+            "EnterMBCC",
+            "Announcement",
+            "Sub_NetLoading",
+            "Sub_GameLoading",
+            "PackageCheck",
+            "ZiYiLogo",
+            "Sub_StartApp"
+        ]
+    },
+    "HomeFlag": {
+        "recognition": "OCR",
+        "pre_wait_freezes": 1000,
+        "expected": [
+            "采购办",
+            "禁闭者",
+            "夜莺助手"
+        ],
+        "post_delay": 1000,
+        "next": [
+            "AssistMode",
+            "DailyWork",
+            "Back"
+        ]
+    },
+    "5732Logo": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/5732Logo.png",
+        "next": [
+            "EnterMBCC",
+            "ZiYiLogo",
+            "PackageCheck",
+            "Announcement"
+        ]
+    },
+    "ZiYiLogo": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/ZiYiLogo.png",
+        "next": [
+            "PackageCheck",
+            "EnterMBCC",
+            "Announcement"
+        ]
+    },
+    "PackageCheck": {
+        "recognition": "OCR",
+        "expected": "安装包检查中",
+        "next": [
+            "EnterMBCC",
+            "Announcement"
+        ]
+    },
+    "Sub_NetLoading": {
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected": "意识恢复中"
+    },
+    "Announcement": {
+        "recognition": "OCR",
+        "expected": "系统公告",
+        "action": "Click",
+        "target": [
+            1096,
+            136,
+            184,
+            584
+        ],
+        "next": [
+            "EnterMBCC"
+        ]
+    },
+    "Sub_StartApp": {
+        "is_sub": true,
+        "action": "StartApp",
+        "package": "com.zy.wqmt.cn/com.papegames.gamelib_unity.BaseUnityImplActivity",
+        "post_delay": 500
+    },
+    "EnterMBCC": {
+        "recognition": "OCR",
+        "expected": "进入管理局",
+        "action": "Click",
+        "next": [
+            "HomeFlag",
+            "Announcement",
+            "EnterMBCC"
+        ]
+    },
+    "Sub_GameLoading": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "StartUp/GameLoading.png"
+    }
+}
