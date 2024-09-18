@@ -1,0 +1,70 @@
+{
+    "Sub_Regulator": {
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected": "前往处理监管事件",
+        "action": "Click",
+        "next": [
+            "StartRegular",
+            "Sub_Regulator"
+        ]
+    },
+    "StartRegular": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/StartRegular.png",
+        "action": "Click",
+        "target_offset": [
+            28,
+            26,
+            -50,
+            -49
+        ],
+        "next": [
+            "Next",
+            "Sub_Skip",
+            "Sub_ThingsGet",
+            "ClickRe",
+            "StartRegular"
+        ]
+    },
+    "ClickRe": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            805,
+            623,
+            384,
+            37
+        ],
+        "next": [
+            "Next",
+            "Sub_Skip",
+            "Sub_ThingsGet",
+            "Back"
+        ]
+    },
+    "Next": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/Next.png",
+        "action": "Click",
+        "next": [
+            "Next",
+            "Sub_Skip",
+            "Sub_ThingsGet",
+            "ClickRe",
+            "Back"
+        ]
+    },
+    "Sub_Skip": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/Skip.png",
+        "roi": [
+            1107,
+            6,
+            173,
+            49
+        ],
+        "action": "Click"
+    }
+}

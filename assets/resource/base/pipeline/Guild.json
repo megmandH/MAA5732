@@ -1,0 +1,78 @@
+{
+    "Sub_Guild": {
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected": "有秘盟捐赠次数可用",
+        "action": "Click",
+        "next": [
+            "GuildClick",
+            "Sub_ThingsGet",
+            "Sub_Guild"
+        ]
+    },
+    "GuildClick": {
+        "recognition": "OCR",
+        "expected": "今日签到",
+        "action": "Click",
+        "roi": [
+            678,
+            223,
+            214,
+            87
+        ],
+        "target": [
+            1037,
+            275,
+            222,
+            317
+        ],
+        "next": [
+            "Donate",
+            "GuildClick"
+        ]
+    },
+    "Donate": {
+        "recognition": "OCR",
+        "expected": "秘盟捐赠",
+        "roi": [
+            394,
+            404,
+            300,
+            163
+        ],
+        "action": "Click",
+        "target": [
+            449,
+            437,
+            181,
+            94
+        ],
+        "next": [
+            "DonateFlag",
+            "AllDonate",
+            "Donate"
+        ]
+    },
+    "AllDonate": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/AllDonate.png",
+        "roi": [
+            268,
+            541,
+            155,
+            115
+        ],
+        "action": "Click",
+        "next": [
+            "Sub_ThingsGet",
+            "DonateFlag"
+        ]
+    },
+    "DonateFlag": {
+        "recognition": "OCR",
+        "expected": "明日可捐赠",
+        "next": [
+            "Back"
+        ]
+    }
+}

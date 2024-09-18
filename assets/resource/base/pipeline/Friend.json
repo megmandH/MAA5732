@@ -1,0 +1,47 @@
+{
+    "Sub_Friend": {
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected": "有友情点可以领取",
+        "action": "Click",
+        "next": [
+            "FriendFlag",
+            "AllFriendSend",
+            "Sub_AllReceive",
+            "Sub_Friend"
+        ]
+    },
+    "FriendFlag": {
+        "recognition": "ColorMatch",
+        "roi": [
+            1022,
+            593,
+            33,
+            30
+        ],
+        "method": 4,
+        "lower": [
+            95,
+            94,
+            95
+        ],
+        "upper": [
+            103,
+            103,
+            103
+        ],
+        "count": 360,
+        "connected": false,
+        "next": [
+            "Back"
+        ]
+    },
+    "AllFriendSend": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/AllFriendSend.png",
+        "action": "Click",
+        "next": [
+            "Back"
+        ]
+    }
+}

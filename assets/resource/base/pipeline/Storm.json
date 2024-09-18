@@ -1,0 +1,12 @@
+{
+    "Sub_Storm": {
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected": "有记忆风暴次数可用",
+        "action": "Click",
+        "next": [
+            "MissionFlag",
+            "Sub_Storm"
+        ]
+    }
+}

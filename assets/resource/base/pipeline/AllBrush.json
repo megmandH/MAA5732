@@ -1,0 +1,44 @@
+{
+    "AllBrush": {
+        "next": [
+            "Dysmyth",
+            "FunctionMode"
+        ]
+    },
+    "Dysmyth": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/Dysmyth.png",
+        "roi": [
+            616,
+            124,
+            651,
+            205
+        ],
+        "action": "Click",
+        "next": [
+            "StartAllBrush"
+        ]
+    },
+    "StartAllBrush": {
+        "next": [
+            "XiuRiver"
+        ]
+    },
+    "XiuRiver": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/XiuRiver.png",
+        "action": "Click",
+        "next": [
+            "SkillMaterials"
+        ]
+    },
+    "SkillMaterials": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/SkillMaterials.png",
+        "action": "Click",
+        "next": [
+            "MissionFlag",
+            "SkillMaterials"
+        ]
+    }
+}

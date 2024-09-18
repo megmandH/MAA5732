@@ -1,0 +1,90 @@
+{
+    "Sub_FreeShop": {
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected": "免费礼包可购买",
+        "action": "Click",
+        "post_delay": 500,
+        "next": [
+            "ShopFlag",
+            "Sub_SelectedShop"
+        ]
+    },
+    "Sub_SelectedShop": {
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected": "精选礼包",
+        "action": "Click"
+    },
+    "ShopFlag": {
+        "recognition": "OCR",
+        "expected": "局长就任特供",
+        "next": [
+            "SwapShop"
+        ]
+    },
+    "SwapShop": {
+        "action": "Swipe",
+        "begin": [
+            922,
+            444,
+            99,
+            114
+        ],
+        "end": [
+            692,
+            431,
+            60,
+            80
+        ],
+        "post_delay": 500,
+        "next": [
+            "FreeGet",
+            "AlreadyGet",
+            "SwapShop"
+        ]
+    },
+    "AlreadyGet": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/AlreadyGet.png",
+        "roi": [
+            245,
+            414,
+            1033,
+            301
+        ],
+        "next": [
+            "Back"
+        ]
+    },
+    "FreeGet": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/FreeGet.png",
+        "action": "Click",
+        "roi": [
+            245,
+            414,
+            1033,
+            301
+        ],
+        "target_offset": [
+            -78,
+            -57,
+            159,
+            148
+        ],
+        "next": [
+            "FreeBuy",
+            "FreeGet"
+        ]
+    },
+    "FreeBuy": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/ClickBuy.png",
+        "action": "Click",
+        "next": [
+            "Sub_ThingsGet",
+            "Back"
+        ]
+    }
+}

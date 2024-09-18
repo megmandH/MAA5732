@@ -1,0 +1,80 @@
+{
+    "MopUp": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/ConMopUp.png",
+        "action": "Click",
+        "roi": [
+            727,
+            608,
+            203,
+            91
+        ],
+        "next": [
+            "StartMopUp",
+            "MopUp"
+        ]
+    },
+    "StartMopUp": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/StartMopUp.png",
+        "action": "Click",
+        "next": [
+            "ComMopUp",
+            "StartMopUp"
+        ]
+    },
+    "ComMopUp": {
+        "recognition": "OCR",
+        "expected": "扫荡完成",
+        "next": [
+            "MopUpAgain",
+            "ClickFinish"
+        ]
+    },
+    "ClickFinish": {
+        "action": "Click",
+        "target": [
+            390,
+            623,
+            219,
+            47
+        ],
+        "next": [
+            "Back",
+            "ClickFinish"
+        ]
+    },
+    "MopUpAgain": {
+        "recognition": "ColorMatch",
+        "roi": [
+            681,
+            628,
+            39,
+            37
+        ],
+        "method": 4,
+        "lower": [
+            132,
+            0,
+            20
+        ],
+        "upper": [
+            143,
+            0,
+            21
+        ],
+        "count": 200,
+        "connected": false,
+        "action": "Click",
+        "target": [
+            674,
+            622,
+            217,
+            54
+        ],
+        "next": [
+            "MopUpAgain",
+            "ClickFinish"
+        ]
+    }
+}

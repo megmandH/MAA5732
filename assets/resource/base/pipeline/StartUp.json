@@ -13,7 +13,7 @@
     },
     "HomeFlag": {
         "recognition": "OCR",
-        "pre_wait_freezes": 1000,
+        "pre_wait_freezes": 2000,
         "expected": [
             "采购办",
             "禁闭者",
