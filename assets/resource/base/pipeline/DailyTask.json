@@ -2,31 +2,40 @@
     "DailyWork": {
         "next": [
             "AssistMode",
-            "HomeFlag",
-            "Sub_Activity",
-            "Sub_VIPGift",
-            "Sub_EmotionDetecting"
+            "AllBrush"
+        ]
+    },
+    "AssistTask": {
+        "recognition": "OCR",
+        "inverse": true,
+        "expected": [
+            "收取",
+            "领取",
+            "免费"
+        ]
+    },
+    "AssistFlag": {
+        "recognition": "OCR",
+        "expected": "夜莺助手",
+        "next": [
+            "AstRegulator",
+            "AstFreeShop",
+            "AstDispatch",
+            "AstPit",
+            "AstStormy",
+            "AstSecretSociety",
+            "AstFriend",
+            "Receive"
         ]
     },
     "AssistMode": {
         "recognition": "OCR",
         "expected": "助手模式",
         "action": "Click",
-        "post_delay": 2000,
+        "post_delay": 1000,
         "next": [
-            "Sub_receive",
-            "Sub_Regulator",
-            "Sub_FreeShop",
-            "Sub_SendMisson",
-            "Sub_Dig",
-            "Sub_Storm",
-            "Sub_Guild",
-            "Sub_Friend",
-            "Sub_Activity",
-            "Sub_VIPGift",
-            "Sub_EmotionDetecting",
-            "AllBrush",
-            "HomeFlag"
+            "AssistFlag",
+            "AssistMode"
         ]
     },
     "FunctionMode": {
@@ -60,13 +69,13 @@
             117,
             78
         ],
+        "post_wait_freezes": 500,
         "next": [
             "MopUp",
             "MissionFlag"
         ]
     },
-    "Sub_ThingsGet": {
-        "is_sub": true,
+    "ThingsGet": {
         "recognition": "OCR",
         "expected": "获得物资",
         "roi": [
@@ -81,7 +90,8 @@
             521,
             150,
             181
-        ]
+        ],
+        "pre_wait_freezes": 1000
     },
     "Back": {
         "recognition": "TemplateMatch",
@@ -99,28 +109,25 @@
             "Back"
         ]
     },
-    "Sub_receive": {
-        "is_sub": true,
+    "Receive": {
         "recognition": "TemplateMatch",
         "template": "TaskBasics/Receive.png",
         "action": "Click",
         "next": [
-            "Sub_ThingsGet",
-            "Sub_receive",
-            "AssistMode"
+            "ThingsGet",
+            "Receive",
+            "AssistFlag"
         ]
     },
-    "Sub_EmotionDetecting": {
-        "is_sub": true,
+    "EmotionDetecting": {
         "recognition": "OCR",
         "expected": "情绪检测",
         "next": [
             "EmotionSelect_Finish",
-            "Sub_EmotionSelect"
+            "EmotionSelect"
         ]
     },
-    "Sub_EmotionSelect": {
-        "is_sub": true,
+    "EmotionSelect": {
         "recognition": "DirectHit",
         "action": "Click",
         "target": [
@@ -128,6 +135,9 @@
             332,
             334,
             24
+        ],
+        "next": [
+            "EmotionSelect_Finish"
         ]
     },
     "EmotionSelect_Finish": {
@@ -145,14 +155,9 @@
             246,
             90,
             400
-        ],
-        "pre_delay": 500,
-        "next": [
-            "HomeFlag"
         ]
     },
-    "Sub_VIPGift": {
-        "is_sub": true,
+    "VIPGift": {
         "recognition": "OCR",
         "expected": [
             "点击领取今日黑钥贵宾"
@@ -165,8 +170,7 @@
             0
         ]
     },
-    "Sub_Activity": {
-        "is_sub": true,
+    "Activity": {
         "recognition": "OCR",
         "expected": "今日不再弹出",
         "roi": [
@@ -181,6 +185,31 @@
             246,
             184,
             400
+        ]
+    },
+    "HomeButton": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/HomeButton.png",
+        "roi": [
+            107,
+            12,
+            129,
+            64
+        ],
+        "action": "Click",
+        "next": "HomeFlag"
+    },
+    "HomeFlag": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "HomeFlag/HomeFlag2.png",
+            "HomeFlag/HomeFlag3.png"
+        ],
+        "roi": [
+            420,
+            578,
+            84,
+            117
         ]
     }
 }

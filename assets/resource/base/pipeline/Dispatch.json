@@ -1,0 +1,57 @@
+{
+    "AstDispatch": {
+        "recognition": "OCR",
+        "expected": "有派遣任务可以领奖",
+        "action": "Click",
+        "next": [
+            "AllDispatch",
+            "AllReceive",
+            "AstDispatch"
+        ]
+    },
+    "DispatchFull": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/DispatchFull.png",
+        "roi": [
+            45,
+            392,
+            93,
+            47
+        ],
+        "next": [
+            "HomeButton",
+            "Back"
+        ]
+    },
+    "AllReceive": {
+        "recognition": "OCR",
+        "expected": "一键领取",
+        "action": "Click",
+        "roi": [
+            35,
+            485,
+            195,
+            46
+        ],
+        "next": [
+            "AllDispatch"
+        ],
+        "interrupt": [
+            "ThingsGet"
+        ]
+    },
+    "AllDispatch": {
+        "recognition": "OCR",
+        "expected": "一键派遣",
+        "action": "Click",
+        "roi": [
+            35,
+            485,
+            195,
+            46
+        ],
+        "next": [
+            "DispatchFull"
+        ]
+    }
+}

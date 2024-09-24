@@ -1,12 +1,11 @@
 {
-    "Sub_Regulator": {
-        "is_sub": true,
+    "AstRegulator": {
         "recognition": "OCR",
         "expected": "前往处理监管事件",
         "action": "Click",
         "next": [
             "StartRegular",
-            "Sub_Regulator"
+            "AstRegulator"
         ]
     },
     "StartRegular": {
@@ -20,11 +19,12 @@
             -49
         ],
         "next": [
-            "Next",
-            "Sub_Skip",
-            "Sub_ThingsGet",
-            "ClickRe",
-            "StartRegular"
+            "Next"
+        ],
+        "interrupt": [
+            "Skip",
+            "ThingsGet",
+            "ClickRe"
         ]
     },
     "ClickRe": {
@@ -35,12 +35,6 @@
             623,
             384,
             37
-        ],
-        "next": [
-            "Next",
-            "Sub_Skip",
-            "Sub_ThingsGet",
-            "Back"
         ]
     },
     "Next": {
@@ -49,14 +43,16 @@
         "action": "Click",
         "next": [
             "Next",
-            "Sub_Skip",
-            "Sub_ThingsGet",
-            "ClickRe",
-            "Back"
+            "RegulatorFinish",
+            "HomeFlag"
+        ],
+        "interrupt": [
+            "Skip",
+            "ThingsGet",
+            "ClickRe"
         ]
     },
-    "Sub_Skip": {
-        "is_sub": true,
+    "Skip": {
         "recognition": "TemplateMatch",
         "template": "TaskBasics/Skip.png",
         "roi": [
@@ -66,5 +62,13 @@
             49
         ],
         "action": "Click"
+    },
+    "RegulatorFinish": {
+        "recognition": "OCR",
+        "expected": "处理完毕",
+        "next": [
+            "HomeButton",
+            "Back"
+        ]
     }
 }

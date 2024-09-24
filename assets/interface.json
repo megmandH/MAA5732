@@ -31,45 +31,40 @@
     ],
     "task": [
         {
-            "name": "普通任务",
-            "entry": "MyTask1"
+            "name": "启动游戏",
+            "entry": "Start5732"
         },
         {
-            "name": "选项任务",
-            "entry": "MyTask2",
-            "option": [
-                "任务选项1"
-            ]
+            "name": "监管事件",
+            "entry": "AstRegulator"
         },
         {
-            "name": "参数任务",
-            "entry": "MyTask3",
-            "option": [
-                "任务选项1"
-            ],
-            "param": {}
+            "name": "购买免费礼包",
+            "entry": "AstFreeShop"
+        },
+        {
+            "name": "浊暗之阱",
+            "entry": "AstPit"
+        },
+        {
+            "name": "领取",
+            "entry": "Receive"
+        },
+        {
+            "name": "派遣任务",
+            "entry": "AstDispatch"
+        },
+        {
+            "name": "记忆风暴",
+            "entry": "AstStormy"
+        },
+        {
+            "name": "秘盟捐赠",
+            "entry": "AstSecretSociety"
+        },
+        {
+            "name": "友情点领取",
+            "entry": "AstFriend"
         }
-    ],
-    "option": {
-        "任务选项1": {
-            "cases": [
-                {
-                    "name": "文本1",
-                    "param": {
-                        "OcrTask": {
-                            "text": "文本1"
-                        }
-                    }
-                },
-                {
-                    "name": "文本2",
-                    "param": {
-                        "OcrTask": {
-                            "text": "文本2"
-                        }
-                    }
-                }
-            ]
-        }
-    }
+    ]
 }

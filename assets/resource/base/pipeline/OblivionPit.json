@@ -1,0 +1,143 @@
+{
+    "AstPit": {
+        "recognition": "OCR",
+        "expected": "有浊暗之阱事务需要处理",
+        "action": "Click",
+        "next": [
+            "ObliPitFlag",
+            "IntoPit"
+        ],
+        "interrupt": [
+            "RotDFlag"
+        ]
+    },
+    "RotDFlag": {
+        "recognition": "OCR",
+        "expected": "深阱残骸",
+        "roi": [
+            17,
+            66,
+            218,
+            108
+        ]
+    },
+    "IntoRotD": {
+        "recognition": "OCR",
+        "expected": "深阱残骸",
+        "roi": [
+            579,
+            633,
+            121,
+            44
+        ],
+        "action": "Click",
+        "target": [
+            600,
+            588,
+            82,
+            68
+        ]
+    },
+    "IntoPit": {
+        "recognition": "OCR",
+        "expected": "浊暗之阱",
+        "roi": [
+            579,
+            633,
+            121,
+            44
+        ],
+        "action": "Click",
+        "target": [
+            600,
+            588,
+            82,
+            68
+        ],
+        "next": [
+            "ObliPitFlag"
+        ]
+    },
+    "ObliPitFlag": {
+        "recognition": "OCR",
+        "expected": "浊暗之阱",
+        "roi": [
+            25,
+            83,
+            199,
+            145
+        ],
+        "next": [
+            "PitComplete"
+        ],
+        "interrupt": [
+            "ParadiseIllusion"
+        ]
+    },
+    "ParadiseIllusion": {
+        "recognition": "OCR",
+        "expected": "乐园幻境",
+        "roi": [
+            1111,
+            532,
+            111,
+            35
+        ],
+        "action": "Click",
+        "target": [
+            1008,
+            449,
+            117,
+            102
+        ],
+        "next": [
+            "PitMopUp"
+        ]
+    },
+    "PitMopUp": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/PitMopUp.png",
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "next": [
+            "BackPit"
+        ],
+        "interrupt": [
+            "ThingsGet"
+        ]
+    },
+    "BackPit": {
+        "recognition": "OCR",
+        "expected": "本区域限制禁闭者",
+        "roi": [
+            826,
+            72,
+            313,
+            45
+        ],
+        "action": "Click",
+        "target": [
+            1159,
+            132,
+            100,
+            540
+        ],
+        "next": [
+            "PitComplete"
+        ]
+    },
+    "PitComplete": {
+        "recognition": "OCR",
+        "expected": "0",
+        "roi": [
+            35,
+            95,
+            180,
+            123
+        ],
+        "next": [
+            "HomeButton",
+            "Back"
+        ]
+    }
+}

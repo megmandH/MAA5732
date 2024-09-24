@@ -1,26 +1,56 @@
 {
-    "Sub_FreeShop": {
-        "is_sub": true,
+    "AstFreeShop": {
         "recognition": "OCR",
         "expected": "免费礼包可购买",
         "action": "Click",
         "post_delay": 500,
         "next": [
             "ShopFlag",
-            "Sub_SelectedShop"
+            "SelectedShop"
         ]
     },
-    "Sub_SelectedShop": {
-        "is_sub": true,
+    "SelectedShop": {
         "recognition": "OCR",
         "expected": "精选礼包",
-        "action": "Click"
+        "action": "Click",
+        "next": [
+            "ShopFlag"
+        ]
+    },
+    "Shop": {
+        "recognition": "OCR",
+        "expected": "精选礼包",
+        "next": [
+            "ShopFlag",
+            "SelectedShop"
+        ]
     },
     "ShopFlag": {
-        "recognition": "OCR",
-        "expected": "局长就任特供",
+        "recognition": "ColorMatch",
+        "roi": [
+            183,
+            285,
+            42,
+            39
+        ],
+        "method": 4,
+        "lower": [
+            137,
+            1,
+            21
+        ],
+        "upper": [
+            145,
+            1,
+            23
+        ],
+        "count": 550,
+        "connected": false,
         "next": [
             "SwapShop"
+        ],
+        "on_error": [
+            "SelectedShop"
         ]
     },
     "SwapShop": {
@@ -54,6 +84,7 @@
             301
         ],
         "next": [
+            "HomeButton",
             "Back"
         ]
     },
@@ -79,12 +110,27 @@
         ]
     },
     "FreeBuy": {
-        "recognition": "TemplateMatch",
-        "template": "Shop/ClickBuy.png",
+        "recognition": "OCR",
+        "expected": "每日免费补给",
+        "roi": [
+            823,
+            147,
+            313,
+            83
+        ],
         "action": "Click",
+        "target": [
+            885,
+            504,
+            219,
+            48
+        ],
+        "post_delay": 1000,
         "next": [
-            "Sub_ThingsGet",
-            "Back"
+            "AlreadyGet"
+        ],
+        "interrupt": [
+            "ThingsGet"
         ]
     }
 }

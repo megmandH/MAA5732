@@ -1,17 +1,22 @@
 {
     "Start5732": {
         "next": [
-            "HomeFlag",
+            "EnterFlag",
             "EnterMBCC",
             "Announcement",
-            "Sub_NetLoading",
-            "Sub_GameLoading",
             "PackageCheck",
             "ZiYiLogo",
-            "Sub_StartApp"
+            "5732Logo"
+        ],
+        "interrupt": [
+            "Activity",
+            "VIPGift",
+            "EmotionDetecting",
+            "NetLoading",
+            "StartApp"
         ]
     },
-    "HomeFlag": {
+    "EnterFlag": {
         "recognition": "OCR",
         "pre_wait_freezes": 2000,
         "expected": [
@@ -19,11 +24,12 @@
             "禁闭者",
             "夜莺助手"
         ],
-        "post_delay": 1000,
         "next": [
-            "AssistMode",
-            "DailyWork",
-            "Back"
+            "EmotionDetecting"
+        ],
+        "interrupt": [
+            "Activity",
+            "VIPGift"
         ]
     },
     "5732Logo": {
@@ -53,8 +59,15 @@
             "Announcement"
         ]
     },
-    "Sub_NetLoading": {
-        "is_sub": true,
+    "Downloading": {
+        "recognition": "OCR",
+        "expected": "安装包检查中",
+        "next": [
+            "EnterMBCC",
+            "Announcement"
+        ]
+    },
+    "NetLoading": {
         "recognition": "OCR",
         "expected": "意识恢复中"
     },
@@ -72,8 +85,7 @@
             "EnterMBCC"
         ]
     },
-    "Sub_StartApp": {
-        "is_sub": true,
+    "StartApp": {
         "action": "StartApp",
         "package": "com.zy.wqmt.cn/com.papegames.gamelib_unity.BaseUnityImplActivity",
         "post_delay": 500
@@ -83,14 +95,9 @@
         "expected": "进入管理局",
         "action": "Click",
         "next": [
-            "HomeFlag",
+            "EnterFlag",
             "Announcement",
             "EnterMBCC"
         ]
-    },
-    "Sub_GameLoading": {
-        "is_sub": true,
-        "recognition": "TemplateMatch",
-        "template": "StartUp/GameLoading.png"
     }
 }

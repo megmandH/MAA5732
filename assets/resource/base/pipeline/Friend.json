@@ -1,14 +1,42 @@
 {
-    "Sub_Friend": {
-        "is_sub": true,
+    "AstFriend": {
         "recognition": "OCR",
         "expected": "有友情点可以领取",
         "action": "Click",
         "next": [
             "FriendFlag",
             "AllFriendSend",
-            "Sub_AllReceive",
-            "Sub_Friend"
+            "FriendPoints",
+            "FriendPointsGet"
+        ]
+    },
+    "FriendPoints": {
+        "recognition": "OCR",
+        "expected": "有可领取友情点",
+        "roi": [
+            736,
+            600,
+            157,
+            35
+        ],
+        "action": "Click",
+        "target": [
+            1019,
+            589,
+            175,
+            36
+        ],
+        "next": [
+            "FriendPointsGet"
+        ]
+    },
+    "FriendPointsGet": {
+        "recognition": "OCR",
+        "expected": "一键领取",
+        "action": "Click",
+        "next": [
+            "FriendFlag",
+            "AllFriendSend"
         ]
     },
     "FriendFlag": {
@@ -33,6 +61,7 @@
         "count": 360,
         "connected": false,
         "next": [
+            "HomeButton",
             "Back"
         ]
     },
@@ -41,6 +70,7 @@
         "template": "TaskBasics/AllFriendSend.png",
         "action": "Click",
         "next": [
+            "HomeButton",
             "Back"
         ]
     }
