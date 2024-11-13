@@ -9,6 +9,7 @@
             "5732Logo"
         ],
         "interrupt": [
+            "Entering",
             "Activity",
             "VIPGift",
             "EmotionDetecting",
@@ -28,6 +29,7 @@
             "EmotionDetecting"
         ],
         "interrupt": [
+            "NetLoading",
             "Activity",
             "VIPGift"
         ]
@@ -49,6 +51,9 @@
             "PackageCheck",
             "EnterMBCC",
             "Announcement"
+        ],
+        "interrupt":[
+            "资源包下载中"
         ]
     },
     "PackageCheck": {
@@ -71,6 +76,10 @@
         "recognition": "OCR",
         "expected": "意识恢复中"
     },
+    "Entering":{
+        "recognition":"TemplateMatch",
+        "template":"StartUp/Entering.png"
+    },
     "Announcement": {
         "recognition": "OCR",
         "expected": "系统公告",
@@ -82,13 +91,14 @@
             584
         ],
         "next": [
-            "EnterMBCC"
+            "EnterMBCC",
+            "Announcement"
         ]
     },
     "StartApp": {
         "action": "StartApp",
         "package": "com.zy.wqmt.cn/com.papegames.gamelib_unity.BaseUnityImplActivity",
-        "post_delay": 500
+        "post_delay": 4000
     },
     "EnterMBCC": {
         "recognition": "OCR",
@@ -96,8 +106,21 @@
         "action": "Click",
         "next": [
             "EnterFlag",
+            "EmotionDetecting",
             "Announcement",
             "EnterMBCC"
+        ],
+        "interrupt": [
+            "Activity",
+            "VIPGift"
         ]
+    },
+    "资源包下载中":{
+        "recognition":"OCR",
+        "expected":"资源包下载中",
+        "roi":[
+            544,676,220,22
+        ],
+        "post_delay":2000
     }
 }

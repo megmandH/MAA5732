@@ -5,26 +5,20 @@
         "action": "Click",
         "next": [
             "FriendFlag",
-            "AllFriendSend",
+            "FriendPointsSend",
             "FriendPoints",
-            "FriendPointsGet"
+            "FriendPointsGet",
+            "FriendSendFlag"
         ]
     },
     "FriendPoints": {
         "recognition": "OCR",
-        "expected": "有可领取友情点",
+        "expected": ["有可领取友情点","可领取友情点","可领取"],
         "roi": [
             736,
             600,
             157,
             35
-        ],
-        "action": "Click",
-        "target": [
-            1019,
-            589,
-            175,
-            36
         ],
         "next": [
             "FriendPointsGet"
@@ -32,14 +26,42 @@
     },
     "FriendPointsGet": {
         "recognition": "OCR",
-        "expected": "一键领取",
+        "expected": ["一键领取","键领取"],
+        "roi":[1014, 588, 187, 41],
         "action": "Click",
         "next": [
             "FriendFlag",
-            "AllFriendSend"
+            "FriendSendFlag"
+        ]
+    },
+    "FriendSendFlag": {
+        "recognition": "OCR",
+        "expected": ["有可赠送友情点","可赠送","可赠送友情点"],
+        "roi": [
+            736,
+            600,
+            157,
+            35
+        ],
+        "next": [
+            "FriendPointsSend"
         ]
     },
     "FriendFlag": {
+        "recognition": "OCR",
+        "expected": ["今日已领取","日已领取"],
+        "roi": [
+            736,
+            600,
+            157,
+            35
+        ],
+        "next": [
+            "HomeButton",
+            "Back"
+        ]
+    },
+    "FriendFlag_old": {
         "recognition": "ColorMatch",
         "roi": [
             1022,
@@ -65,13 +87,14 @@
             "Back"
         ]
     },
-    "AllFriendSend": {
-        "recognition": "TemplateMatch",
-        "template": "TaskBasics/AllFriendSend.png",
+    "FriendPointsSend": {
+        "recognition": "OCR",
+        "expected": ["一键赠送","键赠送"],
+        "roi":[1014, 588, 187, 41],
         "action": "Click",
         "next": [
-            "HomeButton",
-            "Back"
+            "FriendFlag",
+            "FriendSendFlag"
         ]
     }
 }

@@ -19,12 +19,26 @@
             -49
         ],
         "next": [
-            "Next"
+            "Next",
+            "StartRegular"
         ],
+        "post_delay":200,
         "interrupt": [
             "Skip",
             "ThingsGet",
-            "ClickRe"
+            "有分支"
+        ]
+    },
+    "有分支":{
+        "recognition":"TemplateMatch",
+        "inverse":true,
+        "template":["TaskBasics/Skip.png","TaskBasics/Next.png"],
+        "action":"Click",
+        "target": [
+            805,
+            623,
+            384,
+            37
         ]
     },
     "ClickRe": {
@@ -67,8 +81,21 @@
         "recognition": "OCR",
         "expected": "处理完毕",
         "next": [
+            "监管事件处理完毕",
+            "Next"            
+        ]
+    },
+    "监管事件处理完毕":{
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/Next.png",
+        "inverse":true,
+        "next":[
             "HomeButton",
             "Back"
+        ],
+        "interrupt":[
+            "ThingsGet"
         ]
+
     }
 }

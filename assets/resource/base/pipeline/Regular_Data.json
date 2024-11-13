@@ -3,5 +3,10 @@
         "recognition": "OCR",
         "expected": "那管理局教会了你什么",
         "action": "Click"
+    },
+    "以退为进":{
+        "recognition": "OCR",
+        "expected": "那管理局教会了你什么",
+        "action": "Click"
     }
 }

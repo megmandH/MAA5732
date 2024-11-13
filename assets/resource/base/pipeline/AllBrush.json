@@ -1,8 +1,7 @@
 {
     "AllBrush": {
-        "next": [
-            "Dysmyth",
-            "FunctionMode"
+        "next_doc": [
+            "set in code"
         ]
     },
     "Dysmyth": {
@@ -14,31 +13,217 @@
             651,
             205
         ],
-        "action": "Click",
-        "next": [
-            "StartAllBrush"
-        ]
-    },
-    "StartAllBrush": {
-        "next": [
-            "XiuRiver"
-        ]
+        "action": "Click"
     },
     "XiuRiver": {
         "recognition": "TemplateMatch",
-        "template": "TaskBasics/XiuRiver.png",
+        "template": "Combat/XiuRiver.png",
+        "action": "Click"
+    },
+    "狄斯币G-04":{
+        "next":[
+            "淘金狂热"
+        ],
+        "interrupt":[
+            "Dysmyth",
+            "XiuRiver",
+            "FunctionMode"
+        ]
+
+    },
+    "淘金狂热":{
+        "recognition": "TemplateMatch",
+        "template": "Combat/淘金狂热.png",
         "action": "Click",
         "next": [
-            "SkillMaterials"
+            "G_04_Flag",
+            "淘金狂热"
         ]
+    },
+    "G_04_Flag":{
+        "recognition":"TemplateMatch",
+        "template":[
+            "Combat/淘金狂热_Dis.png",
+            "Combat/淘金狂热_Disfig.png",
+            "Combat/淘金狂热_G_04_Enter.png"
+        ],
+        "next":[
+            "Mission4"
+        ]
+    },
+    "恶兆之种C-04":{
+        "next":[
+            "恶兆之种"
+        ],
+        "interrupt":[
+            "Dysmyth",
+            "XiuRiver",
+            "FunctionMode"
+        ]
+    },
+    "恶兆之种":{"recognition": "TemplateMatch",
+        "template": "Combat/恶兆之种.png",
+        "action": "Click",
+        "next": [
+            "C_04_Flag",
+            "恶兆之种"
+        ]
+    },
+    "C_04_Flag":{
+        "recognition":"TemplateMatch",
+        "template":[
+            "Combat/恶兆之种_flag.png",
+            "Combat/恶兆之种_fig.png",
+            "Combat/恶兆之种_C_04_Enter.png"
+        ],
+        "next":[
+            "Mission4"
+        ]
+    },
+    "狂暴源素L-F4":{
+        "next":[
+            "狂暴源素副本首页"
+        ],
+        "interrupt":[
+            "进入狂暴源素副本首页",
+            "帕尔马废墟",
+            "Dysmyth",
+            "XiuRiver",
+            "FunctionMode"
+        ]
+
+    },
+    "狂暴源素副本首页":{
+        "recognition":"OCR",
+        "expected":"狂暴",
+        "roi":[
+            390,154,434,244
+        ],
+        "next":[
+            "MissionFlag"
+        ]
+    },
+    "进入狂暴源素副本首页":{
+        "recognition":"TemplateMatch",
+        "template":"Combat/狂暴_logo.png",
+        "action":"Click",
+        "target_offset":[
+            -2,-2,178,12
+        ]
+    },
+    "精准源素L-R4":{
+        "next":[
+            "精准源素副本首页"
+        ],
+        "interrupt":[
+            "进入精准源素副本首页",
+            "帕尔马废墟",
+            "Dysmyth",
+            "XiuRiver",
+            "FunctionMode"
+        ]
+
+    },
+    "精准源素副本首页":{
+        "recognition":"OCR",
+        "expected":"精准",
+        "roi":[
+            390,154,434,244
+        ],
+        "next":[
+            "MissionFlag"
+        ]
+    },
+    "进入精准源素副本首页":{
+        "recognition":"TemplateMatch",
+        "template":"Combat/精准_logo.png",
+        "action":"Click",
+        "target_offset":[
+            -2,-2,178,12
+        ]
+    },
+    "启迪源素L-C4":{
+        "next":[
+            "启迪源素副本首页"
+        ],
+        "interrupt":[
+            "进入启迪源素副本首页",
+            "帕尔马废墟",
+            "Dysmyth",
+            "XiuRiver",
+            "FunctionMode"
+        ]
+
+    },
+    "启迪源素副本首页":{
+        "recognition":"OCR",
+        "expected":"启迪",
+        "roi":[
+            390,154,434,244
+        ],
+        "next":[
+            "MissionFlag"
+        ]
+    },
+    "进入启迪源素副本首页":{
+        "recognition":"TemplateMatch",
+        "template":"Combat/启迪_logo.png",
+        "action":"Click",
+        "target_offset":[
+            -2,-2,178,12
+        ]
+    },
+    "职业源素L-C4":{
+        "next":[
+            "职业源素副本首页"
+        ],
+        "interrupt":[
+            "进入狂暴源素副本首页",
+            "帕尔马废墟",
+            "Dysmyth",
+            "XiuRiver",
+            "FunctionMode"
+        ]
+
+    },
+    "职业源素副本首页":{
+        "recognition":"OCR",
+        "expected":"职业",
+        "roi":[
+            390,154,434,244
+        ],
+        "next":[
+            "MissionFlag"
+        ]
+    },
+    "进入职业源素副本首页":{
+        "recognition":"TemplateMatch",
+        "template":"Combat/职业_logo.png",
+        "action":"Click",
+        "target_offset":[
+            -2,-2,178,12
+        ]
+    },
+    "帕尔马废墟":{
+        "recognition": "TemplateMatch",
+        "template": "Combat/帕尔马废墟.png",
+        "action": "Click"
+    },
+    "技能本P-04":{
+        "next":[
+            "MissionFlag"
+        ],
+        "interrupt":[
+            "SkillMaterials",
+            "Dysmyth",
+            "XiuRiver",
+            "FunctionMode"
+        ]
+
     },
     "SkillMaterials": {
         "recognition": "TemplateMatch",
-        "template": "TaskBasics/SkillMaterials.png",
-        "action": "Click",
-        "next": [
-            "MissionFlag",
-            "SkillMaterials"
-        ]
+        "template": "Combat/SkillMaterials.png",
+        "action": "Click"
     }
 }

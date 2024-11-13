@@ -19,19 +19,20 @@
         "template": "TaskBasics/StartMopUp.png",
         "action": "Click",
         "next": [
-            "ComMopUp",
-            "StartMopUp"
+            "ComMopUp"
         ]
     },
     "ComMopUp": {
         "recognition": "OCR",
         "expected": "扫荡完成",
         "next": [
-            "MopUpAgain",
+            "MopUpAgain_color",
             "ClickFinish"
         ]
     },
     "ClickFinish": {
+        "recognition":"OCR",
+        "expected":"完成",
         "action": "Click",
         "target": [
             390,
@@ -40,11 +41,33 @@
             47
         ],
         "next": [
+            "HomeButton",
             "Back",
             "ClickFinish"
         ]
     },
-    "MopUpAgain": {
+    "MopUpAgain":{
+        "recognition":"OCR",
+        "expected":["再次扫荡","再次扫"],
+        "roi":[722,630,118,37
+
+        ],
+        "action": "Click",
+        "target": [
+            674,
+            622,
+            217,
+            54
+        ],
+        "post_delay":200,
+        "next": [
+            "StartMopUp",
+            "MopUpAgain",
+            "ClickFinish"
+        ]
+
+    },
+    "MopUpAgain_color": {
         "recognition": "ColorMatch",
         "roi": [
             681,
@@ -73,7 +96,8 @@
             54
         ],
         "next": [
-            "MopUpAgain",
+            "StartMopUp",
+            "MopUpAgain_color",
             "ClickFinish"
         ]
     }

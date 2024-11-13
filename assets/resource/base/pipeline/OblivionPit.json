@@ -40,7 +40,7 @@
     },
     "IntoPit": {
         "recognition": "OCR",
-        "expected": "浊暗之阱",
+        "expected": ["浊暗之阱","浊暗之","浊暗"],
         "roi": [
             579,
             633,
@@ -68,9 +68,7 @@
             145
         ],
         "next": [
-            "PitComplete"
-        ],
-        "interrupt": [
+            "PitComplete",
             "ParadiseIllusion"
         ]
     },
@@ -98,7 +96,7 @@
         "recognition": "TemplateMatch",
         "template": "TaskBasics/PitMopUp.png",
         "action": "Click",
-        "post_wait_freezes": 1000,
+        "post_delay":500,
         "next": [
             "BackPit"
         ],

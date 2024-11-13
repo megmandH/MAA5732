@@ -5,34 +5,28 @@
         "action": "Click",
         "post_delay": 500,
         "next": [
-            "ShopFlag",
-            "SelectedShop"
+            "Shop"
         ]
     },
     "SelectedShop": {
         "recognition": "OCR",
         "expected": "精选礼包",
         "action": "Click",
+        "post_delay": 1000,
         "next": [
-            "ShopFlag"
+            "SwapShop"
         ]
     },
     "Shop": {
         "recognition": "OCR",
         "expected": "精选礼包",
         "next": [
-            "ShopFlag",
             "SelectedShop"
         ]
     },
     "ShopFlag": {
         "recognition": "ColorMatch",
-        "roi": [
-            183,
-            285,
-            42,
-            39
-        ],
+        "roi": "Shop",
         "method": 4,
         "lower": [
             137,
@@ -67,7 +61,6 @@
             60,
             80
         ],
-        "post_delay": 500,
         "next": [
             "FreeGet",
             "AlreadyGet",
@@ -132,5 +125,44 @@
         "interrupt": [
             "ThingsGet"
         ]
+    },
+    "友情点购买":{
+        "recognition":"OCR",
+        "expected":"兑换中心",
+        "roi":"Shop",
+        "action":"Click",
+        "next":[
+            "友情商店"
+        ],
+        "interrupt":[
+            "上下滑动商店"
+        ]
+    },
+    "上下滑动商店":{
+        "action": "Swipe",
+        "begin": [
+            922,
+            444,
+            99,
+            114
+        ],
+        "end": [
+            692,
+            431,
+            60,
+            80
+        ]
+    },
+    "友情商店":{
+        "recognition":"OCR",
+        "expected":"友情兑换",
+        "roi":"Shop",
+        "action":"Click",
+        "next":[
+            "每日友情点限购"
+        ]
+    },
+    "每日友情点限购":{
+        "action":"Click"
     }
 }

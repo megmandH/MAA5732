@@ -1,70 +1,153 @@
 {
-    "controller": [
-        {
-            "name": "安卓端",
-            "type": "Adb"
-        },
-        {
-            "name": "桌面端",
-            "type": "Win32",
-            "win32": {
-                "method": "Search",
-                "class_name": ".*",
-                "window_name": "Visual Studio"
-            }
-        }
-    ],
+    "name": "MAA5732",
+    "version": "v1.0.0",
+    "url": "",
     "resource": [
-        {
-            "name": "官服",
-            "path": [
-                "{PROJECT_DIR}/resource/base"
-            ]
-        },
-        {
-            "name": "B 服",
-            "path": [
-                "{PROJECT_DIR}/resource/base",
-                "{PROJECT_DIR}/resource/bilibili"
-            ]
-        }
+      {
+        "name": "官服",
+        "path": "{PROJECT_DIR}/resource/base"
+      },
+      {
+        "name": "B 服",
+        "path": [
+          "{PROJECT_DIR}/resource/base",
+          "{PROJECT_DIR}/resource/bilibili"
+        ]
+      }
     ],
     "task": [
-        {
-            "name": "启动游戏",
-            "entry": "Start5732"
-        },
-        {
-            "name": "监管事件",
-            "entry": "AstRegulator"
-        },
-        {
-            "name": "购买免费礼包",
-            "entry": "AstFreeShop"
-        },
-        {
-            "name": "浊暗之阱",
-            "entry": "AstPit"
-        },
-        {
-            "name": "领取",
-            "entry": "Receive"
-        },
-        {
-            "name": "派遣任务",
-            "entry": "AstDispatch"
-        },
-        {
-            "name": "记忆风暴",
-            "entry": "AstStormy"
-        },
-        {
-            "name": "秘盟捐赠",
-            "entry": "AstSecretSociety"
-        },
-        {
-            "name": "友情点领取",
-            "entry": "AstFriend"
-        }
-    ]
-}
+      {
+        "name": "启动游戏",
+        "entry": "Start5732",
+        "check": false,
+        "repeatable": false
+      },
+      {
+        "name": "购买免费礼包",
+        "entry": "AstFreeShop",
+        "check": false,
+        "repeatable": false
+      },
+      {
+        "name": "派遣任务",
+        "entry": "AstDispatch",
+        "check": false,
+        "repeatable": false
+      },
+      {
+        "name": "监管事件",
+        "entry": "AstRegulator",
+        "check": false,
+        "repeatable": false
+      },
+      {
+        "name": "浊暗之阱",
+        "entry": "AstPit",
+        "check": false,
+        "repeatable": false
+      },
+      {
+        "name": "记忆风暴",
+        "entry": "AstStormy",
+        "check": false,
+        "repeatable": false
+      },
+      {
+        "name": "秘盟捐赠",
+        "entry": "AstSecretSociety",
+        "check": false,
+        "repeatable": false
+      },
+      {
+        "name": "友情点领取",
+        "entry": "AstFriend",
+        "check": false,
+        "repeatable": false
+      },
+      {
+        "name": "领取",
+        "entry": "Receive",
+        "check": true,
+        "repeatable": false
+      },
+      {
+        "name":"助手模式全任务",
+        "entry":"DailyWork",
+        "check":false,
+        "repeatable":false
+      },
+      {
+        "name":"清空体力",
+        "entry":"AllBrush",
+        "option":[
+          "选择关卡"
+        ]
+      }
+    ],
+    "option":{
+      "选择材料":{
+        "case":[
+          {
+            "name":"狄斯币G-04",
+            "pipeline_override":{
+              "AllBrush":{
+                "next":[
+                  "狄斯币G-04"
+                ]
+              }
+            }
+          },
+          {
+            "name":"恶兆之种C-04",
+            "pipeline_override":{
+              "AllBrush":{
+                "next":[
+                  "恶兆之种C-04"
+                ]
+              }
+            }
+          },
+          {
+            "name":"技能本P-04",
+            "pipeline_override":{
+              "AllBrush":{
+                "next":[
+                  "技能本P-04"
+                ]
+              }
+            }
+          },
+          {
+            "name":"狂暴源素L-F4",
+            "pipeline_override":{
+              "AllBrush":{
+                "next":[
+                  "狂暴源素L-F4"
+                ]
+              }
+            }
+          },
+          {
+            "name":"精准源素L-R4",
+            "pipeline_override":{
+              "AllBrush":{
+                "next":[
+                  "精准源素L-R4"
+                ]
+              }
+            }
+          },
+          {
+            "name":"启迪源素L-C4",
+            "pipeline_override":{
+              "AllBrush":{
+                "next":[
+                  "启迪源素L-C4"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
