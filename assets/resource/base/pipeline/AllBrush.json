@@ -27,7 +27,7 @@
         "interrupt":[
             "Dysmyth",
             "XiuRiver",
-            "FunctionMode"
+            "ClickFunctionMode"
         ]
 
     },
@@ -58,7 +58,7 @@
         "interrupt":[
             "Dysmyth",
             "XiuRiver",
-            "FunctionMode"
+            "ClickFunctionMode"
         ]
     },
     "恶兆之种":{"recognition": "TemplateMatch",
@@ -89,7 +89,9 @@
             "帕尔马废墟",
             "Dysmyth",
             "XiuRiver",
-            "FunctionMode"
+            "ClickFunctionMode",
+            "SlideUp",
+            "SlideDown"
         ]
 
     },
@@ -120,7 +122,9 @@
             "帕尔马废墟",
             "Dysmyth",
             "XiuRiver",
-            "FunctionMode"
+            "ClickFunctionMode",
+            "SlideUp",
+            "SlideDown"
         ]
 
     },
@@ -151,7 +155,9 @@
             "帕尔马废墟",
             "Dysmyth",
             "XiuRiver",
-            "FunctionMode"
+            "ClickFunctionMode",
+            "SlideUp",
+            "SlideDown"
         ]
 
     },
@@ -173,22 +179,24 @@
             -2,-2,178,12
         ]
     },
-    "职业源素L-C4":{
+    "坚韧源素L-E4":{
         "next":[
-            "职业源素副本首页"
+            "坚韧源素副本首页"
         ],
         "interrupt":[
-            "进入狂暴源素副本首页",
+            "进入坚韧源素副本首页",
             "帕尔马废墟",
             "Dysmyth",
             "XiuRiver",
-            "FunctionMode"
+            "ClickFunctionMode",
+            "SlideUp",
+            "SlideDown"
         ]
 
     },
-    "职业源素副本首页":{
+    "坚韧源素副本首页":{
         "recognition":"OCR",
-        "expected":"职业",
+        "expected":"坚韧",
         "roi":[
             390,154,434,244
         ],
@@ -196,9 +204,75 @@
             "MissionFlag"
         ]
     },
-    "进入职业源素副本首页":{
+    "进入坚韧源素副本首页":{
         "recognition":"TemplateMatch",
-        "template":"Combat/职业_logo.png",
+        "template":"Combat/坚韧_logo.png",
+        "action":"Click",
+        "target_offset":[
+            -2,-2,178,12
+        ]
+    },
+    "诡秘源素L-U4":{
+        "next":[
+            "诡秘源素副本首页"
+        ],
+        "interrupt":[
+            "进入诡秘源素副本首页",
+            "帕尔马废墟",
+            "Dysmyth",
+            "XiuRiver",
+            "ClickFunctionMode",
+            "SlideUp",
+            "SlideDown"
+        ]
+
+    },
+    "诡秘源素副本首页":{
+        "recognition":"OCR",
+        "expected":"诡秘",
+        "roi":[
+            390,154,434,244
+        ],
+        "next":[
+            "MissionFlag"
+        ]
+    },
+    "进入诡秘源素副本首页":{
+        "recognition":"TemplateMatch",
+        "template":"Combat/诡秘_logo.png",
+        "action":"Click",
+        "target_offset":[
+            -2,-2,178,12
+        ]
+    },
+    "异能源素L-A4":{
+        "next":[
+            "异能源素副本首页"
+        ],
+        "interrupt":[
+            "进入异能源素副本首页",
+            "帕尔马废墟",
+            "Dysmyth",
+            "XiuRiver",
+            "ClickFunctionMode",
+            "SlideUp",
+            "SlideDown"
+        ]
+
+    },
+    "异能源素副本首页":{
+        "recognition":"OCR",
+        "expected":"异能",
+        "roi":[
+            390,154,434,244
+        ],
+        "next":[
+            "MissionFlag"
+        ]
+    },
+    "进入异能源素副本首页":{
+        "recognition":"TemplateMatch",
+        "template":"Combat/异能_logo.png",
         "action":"Click",
         "target_offset":[
             -2,-2,178,12
@@ -217,7 +291,7 @@
             "SkillMaterials",
             "Dysmyth",
             "XiuRiver",
-            "FunctionMode"
+            "ClickFunctionMode"
         ]
 
     },
@@ -225,5 +299,14 @@
         "recognition": "TemplateMatch",
         "template": "Combat/SkillMaterials.png",
         "action": "Click"
+    },
+    "SlideDown":{
+        "action": "Swipe",
+        "begin": [
+            105, 268, 116, 53
+        ],
+        "end": [
+            113, 457, 112, 47
+        ]
     }
 }

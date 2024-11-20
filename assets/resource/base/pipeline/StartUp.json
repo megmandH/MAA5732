@@ -1,7 +1,7 @@
 {
     "Start5732": {
         "next": [
-            "EnterFlag",
+            "Home",
             "EnterMBCC",
             "Announcement",
             "PackageCheck",
@@ -10,28 +10,27 @@
         ],
         "interrupt": [
             "Entering",
-            "Activity",
-            "VIPGift",
-            "EmotionDetecting",
+            "ClosePopup",
+            "BlackKeyVIP",
+            "EmotionDetection",
             "NetLoading",
             "StartApp"
         ]
     },
-    "EnterFlag": {
+    "Home": {
         "recognition": "OCR",
-        "pre_wait_freezes": 2000,
         "expected": [
             "采购办",
             "禁闭者",
             "夜莺助手"
         ],
         "next": [
-            "EmotionDetecting"
+            "IsEmotion"
         ],
         "interrupt": [
-            "NetLoading",
-            "Activity",
-            "VIPGift"
+            "ClosePopup",
+            "BlackKeyVIP",
+            "NetLoading"
         ]
     },
     "5732Logo": {
@@ -52,8 +51,8 @@
             "EnterMBCC",
             "Announcement"
         ],
-        "interrupt":[
-            "资源包下载中"
+        "interrupt": [
+            "Downloading"
         ]
     },
     "PackageCheck": {
@@ -64,21 +63,14 @@
             "Announcement"
         ]
     },
-    "Downloading": {
-        "recognition": "OCR",
-        "expected": "安装包检查中",
-        "next": [
-            "EnterMBCC",
-            "Announcement"
-        ]
-    },
     "NetLoading": {
         "recognition": "OCR",
-        "expected": "意识恢复中"
+        "expected": "意识恢复中",
+        "post_delay":2000
     },
-    "Entering":{
-        "recognition":"TemplateMatch",
-        "template":"StartUp/Entering.png"
+    "Entering": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/Entering.png"
     },
     "Announcement": {
         "recognition": "OCR",
@@ -91,8 +83,7 @@
             584
         ],
         "next": [
-            "EnterMBCC",
-            "Announcement"
+            "EnterMBCC"
         ]
     },
     "StartApp": {
@@ -102,25 +93,138 @@
     },
     "EnterMBCC": {
         "recognition": "OCR",
-        "expected": "进入管理局",
+        "expected": [
+            "进入管理局",
+            "管理局"
+        ],
         "action": "Click",
         "next": [
-            "EnterFlag",
-            "EmotionDetecting",
-            "Announcement",
-            "EnterMBCC"
+            "Home",
+            "EmotionDetection"
         ],
         "interrupt": [
-            "Activity",
-            "VIPGift"
+            "ClosePopup",
+            "BlackKeyVIP",
+            "Announcement",
+            "Entering"
+            
         ]
     },
-    "资源包下载中":{
-        "recognition":"OCR",
-        "expected":"资源包下载中",
-        "roi":[
-            544,676,220,22
+    "Downloading": {
+        "recognition": "OCR",
+        "expected": "资源包下载中",
+        "roi": [
+            544,
+            676,
+            220,
+            22
         ],
-        "post_delay":2000
+        "post_delay": 2000
+    },
+    "ClosePopup": {
+        "recognition": "OCR",
+        "expected": ["不再弹出","再弹出","不再弹","今日不再弹出","日不再弹出","今日不再弹出功能模式","今日不再弹出功","今日不再弹出功能","今日不再弹出功能模"],
+        "roi": [
+            923,
+            589,
+            262,
+            146
+        ],
+        "action": "Click",
+        "target": [
+            1148, 426, 123, 261
+        ]
+    },
+    "EmotionDetection": {
+        "recognition": "OCR",
+        "expected": "情绪检测",
+        "next": [
+            "EmotionDetectionFinish",
+            "EmotionDetectionSelect"
+        ],
+        "interrupt":[
+            "ClosePopup",
+            "BlackKeyVIP"
+        ]
+    },
+    "EmotionDetectionSelect": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            658,
+            332,
+            334,
+            24
+        ],
+        "next": [
+            "EmotionDetectionFinish"
+        ]
+    },
+    "EmotionDetectionFinish": {
+        "recognition": "OCR",
+        "expected": "检测完成",
+        "roi": [
+            600,
+            320,
+            220,
+            70
+        ],
+        "action": "Click",
+        "target": [
+            1096,
+            246,
+            90,
+            400
+        ]
+    },
+    "IsEmotion":{
+        "recognition":"TemplateMatch",
+        "template":"StartUp/IsEmotion.png",
+        "next":[
+            "NeedEmotionDetection",
+            "NoneedEmotionDetection"
+        ]
+    },
+    "NeedEmotionDetection":{
+        "recognition":"TemplateMatch",
+        "template":"StartUp/needTask.png",
+        "roi":[1033, 90, 51, 39],
+        "post_delay":3000,
+        "next":[
+            "EmotionDetection"
+        ],
+        "interrupt": [
+            "ClosePopup",
+            "BlackKeyVIP",
+            "NetLoading"
+        ]
+    },
+    "NoneedEmotionDetection":{
+        "recognition":"TemplateMatch",
+        "template":"TaskBasics/needTask.png",
+        "inverse":true,
+        "roi":[1033, 90, 51, 39],
+        "post_delay":3000,
+        "next":[
+            "HomeFlag"
+        ],
+        "interrupt": [
+            "ClosePopup",
+            "BlackKeyVIP",
+            "NetLoading"
+        ]
+    },
+    "BlackKeyVIP": {
+        "recognition": "OCR",
+        "expected": [
+            "点击领取今日黑钥贵宾","领取今日黑钥贵宾"
+        ],
+        "action": "Click",
+        "target": [
+            0,
+            0,
+            0,
+            0
+        ]
     }
 }

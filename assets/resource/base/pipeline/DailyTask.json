@@ -1,6 +1,16 @@
 {
     "DailyWork": {
         "next": [
+            "AssistMode"
+        ],
+        "interrupt":[
+            "ClickAssistMode"
+        ]
+    },
+    "AssistMode":{
+        "recognition":"OCR",
+        "expected":["夜莺助手"],
+        "next":[
             "AssistTaskFlag"
         ],
         "interrupt":[
@@ -12,8 +22,9 @@
             "AstRegulator",
             "AstSecretSociety",
             "AstStormy",
-            "AssistMode"
+            "Mails"
         ]
+
     },
     "AssistTaskFlag": {
         "recognition": "OCR",
@@ -26,29 +37,16 @@
             "监管事件",
             "秘盟捐赠次数",
             "记忆风暴次数",
-            "体力专属补给"
+            "体力专属补给",
+            "邮件"
         ]
     },
-    "AssistFlag": {
-        "recognition": "OCR",
-        "expected": "夜莺助手",
-        "next": [
-            "Receive",
-            "AstRegulator",
-            "AstFreeShop",
-            "AstDispatch",
-            "AstPit",
-            "AstStormy",
-            "AstSecretSociety",
-            "AstFriend"
-        ]
-    },
-    "AssistMode": {
+    "ClickAssistMode": {
         "recognition": "OCR",
         "expected": "助手模式",
         "action": "Click"
     },
-    "FunctionMode": {
+    "ClickFunctionMode": {
         "recognition": "OCR",
         "expected": "功能模式",
         "action": "Click"
@@ -125,78 +123,6 @@
             "ThingsGet"
         ]
     },
-    "EmotionDetecting": {
-        "recognition": "OCR",
-        "expected": "情绪检测",
-        "next": [
-            "EmotionSelect_Finish",
-            "EmotionSelect"
-        ],
-        "interrupt":[
-            "Activity",
-            "VIPGift"
-        ]
-    },
-    "EmotionSelect": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            658,
-            332,
-            334,
-            24
-        ],
-        "next": [
-            "EmotionSelect_Finish"
-        ]
-    },
-    "EmotionSelect_Finish": {
-        "recognition": "OCR",
-        "expected": "检测完成",
-        "roi": [
-            600,
-            320,
-            220,
-            70
-        ],
-        "action": "Click",
-        "target": [
-            1096,
-            246,
-            90,
-            400
-        ],
-        "next": [
-            "AssistMode"
-        ]
-    },
-    "VIPGift": {
-        "recognition": "OCR",
-        "expected": [
-            "点击领取今日黑钥贵宾","领取今日黑钥贵宾"
-        ],
-        "action": "Click",
-        "target": [
-            0,
-            0,
-            0,
-            0
-        ]
-    },
-    "Activity": {
-        "recognition": "OCR",
-        "expected": ["不再弹出","再弹出","不再弹","今日不再弹出","日不再弹出","今日不再弹出功能模式","今日不再弹出功","今日不再弹出功能","今日不再弹出功能模"],
-        "roi": [
-            923,
-            589,
-            262,
-            146
-        ],
-        "action": "Click",
-        "target": [
-            1148, 426, 123, 261
-        ]
-    },
     "HomeButton": {
         "recognition": "TemplateMatch",
         "template": "TaskBasics/HomeButton.png",
@@ -213,7 +139,6 @@
     "HomeFlag": {
         "recognition": "TemplateMatch",
         "template": [
-            "HomeFlag/HomeFlag2.png",
             "HomeFlag/HomeFlag3.png"
         ],
         "roi": [
@@ -223,15 +148,15 @@
             117
         ]
     },
-    "收到邮件":{
+    "Mails":{
         "recognition":"OCR",
         "expected":["收到新邮件","新邮件","邮件"],
         "action":"Click",
         "next":[
-            "处理邮件"
+            "HandleMails"
         ]
     },
-    "处理邮件":{
+    "HandleMails":{
         "recognition":"OCR",
         "expected":["快速处理","速处理"],
         "action":"Click",
@@ -240,6 +165,112 @@
             "Back"
         ],
         "interrupt":[
+            "ThingsGet"
+        ]
+    },
+    "SlideUp":{
+        "action": "Swipe",
+        "begin": [
+            113, 457, 112, 47
+            
+        ],
+        "end": [
+            105, 268, 116, 53
+        ],
+        "post_wait_freezes":3000
+    },
+    "领取监察密令":{
+        "recognition":"OCR",
+        "expected":"监察密令",
+        "roi":[1062, 504, 174, 109],
+        "action":"Click",
+        "post_delay":1000,
+        "next":[
+            "监察密令已领取完毕"
+        ],
+        "interrupt":[
+            "有监察任务奖励",
+            "有监察密令奖励"
+            
+        ]
+    },
+    "有监察任务奖励":{
+        "recognition":"TemplateMatch",
+        "template":"TaskBasics/needTask.png",
+        "roi":[174, 643, 303, 73],
+        "next":[
+            "领取监察任务奖励"
+        ]
+    },
+    "有监察密令奖励":{
+        "recognition":"TemplateMatch",
+        "template":"TaskBasics/needTask.png",
+        "roi":[642, 642, 567, 77],
+        "next":[
+            "领取监察密令奖励"
+        ]
+    },
+    "领取监察密令奖励":{
+        "recognition":"OCR",
+        "expected":["监察密令","监察密","监察"],
+        "roi":[642, 642, 567, 77],
+        "action":"Click",
+        "next":["领取完毕"],
+        "interrupt":[
+            "一键领取"
+        ]
+    },
+    "领取监察任务奖励":{
+        "recognition":"OCR",
+        "expected":["监察任务","监察任"],
+        "roi":[174, 643, 303, 73],
+        "action":"Click",
+        "next":["监察密令已领取完毕"],
+        "interrupt":[
+            "领取每日监察任务奖励",
+            "领取每周监察任务奖励",
+            "领取监察密令奖励"
+        ]
+    },
+    "监察密令已领取完毕":{
+        "recognition":"TemplateMatch",
+        "template":"TaskBasics/needTask.png",
+        "inverse":true
+    },
+    "领取每日监察任务奖励":{
+        "recognition":"OCR",
+        "expected":"每日",
+        "roi":[342, 144, 131, 245],
+        "action":"Click",
+        "next":[
+            "领取完毕"
+        ],
+        "interrupt":[
+            "一键领取"
+        ]
+    },
+    "领取每周监察任务奖励":{
+        "recognition":"OCR",
+        "expected":"每周",
+        "roi":[342, 144, 131, 245],
+        "action":"Click",
+        "next":["领取完毕"],
+        "interrupt":[
+            "一键领取"
+        ]
+    },
+    "领取完毕":{
+        "recognition":"OCR",
+        "expected":"一键领取",
+        "inverse":true,
+        "roi":[712, 537, 561, 113]
+    },
+    "一键领取":{
+        "recognition":"OCR",
+        "expected":"一键领取",
+        "action":"Click",
+        "roi":[712, 537, 561, 113],
+        "next":[
             "ThingsGet"
         ]
     }
