@@ -25,13 +25,17 @@
             "夜莺助手"
         ],
         "next": [
-            "IsEmotion"
+            "EmotionDetection"
         ],
         "interrupt": [
             "ClosePopup",
             "BlackKeyVIP",
             "NetLoading"
-        ]
+        ],
+        "on_error":[
+            "IsEmotion"
+        ],
+        "timeout":10000
     },
     "5732Logo": {
         "recognition": "TemplateMatch",
@@ -183,7 +187,8 @@
         "next":[
             "NeedEmotionDetection",
             "NoneedEmotionDetection"
-        ]
+        ],
+        "focus":true
     },
     "NeedEmotionDetection":{
         "recognition":"TemplateMatch",

@@ -235,7 +235,11 @@
     "监察密令已领取完毕":{
         "recognition":"TemplateMatch",
         "template":"TaskBasics/needTask.png",
-        "inverse":true
+        "inverse":true,
+        "next":[
+            "HomeButton",
+            "Back"
+        ]
     },
     "领取每日监察任务奖励":{
         "recognition":"OCR",

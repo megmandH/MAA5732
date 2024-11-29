@@ -197,7 +197,11 @@
     "没有识别到每日限购":{
         "recognition":"OCR",
         "expected":["狂乱精粹","狄斯币","记忆碎片"],
-        "inverse":true
+        "inverse":true,
+        "next":[
+            "HomeButton",
+            "Back"
+        ]
     },
     "友情商店记忆碎片":{
         "recognition":"OCR",
