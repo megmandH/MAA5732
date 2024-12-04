@@ -71,14 +71,24 @@ jobs:
           out-file-path: "deps"
           extract: true
 
+      - name: Download MFAWPF  
+        uses: robinraju/release-downloader@v1  
+        with:
+          repository: SweetSmellFox/MFAWPF
+          fileName: "MFAWPF*"
+          latest: true
+          out-file-path: "MFA"
+          extract: true
+      
       - name: Install
         shell: bash
         run: |
           python ./install.py ${{ needs.meta.outputs.tag }}
+          cp MFA/MFAWPF.exe install
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MaaXXX-win-${{ matrix.arch }}
+          name: Maa5732-win-${{ matrix.arch }}
           path: "install"
 
   ubuntu:
@@ -110,7 +120,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MaaXXX-linux-${{ matrix.arch }}
+          name: Maa5732-linux-${{ matrix.arch }}
           path: "install"
 
   macos:
@@ -142,7 +152,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MaaXXX-macos-${{ matrix.arch }}
+          name: Maa5732-macos-${{ matrix.arch }}
           path: "install"
 
   android:
@@ -174,7 +184,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MaaXXX-android-${{ matrix.arch }}
+          name: Maa5732-android-${{ matrix.arch }}
           path: "install"
 
   release:
