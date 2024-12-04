@@ -32,10 +32,10 @@
             "BlackKeyVIP",
             "NetLoading"
         ],
-        "on_error":[
+        "on_error": [
             "IsEmotion"
         ],
-        "timeout":10000
+        "timeout": 10000
     },
     "5732Logo": {
         "recognition": "TemplateMatch",
@@ -70,7 +70,7 @@
     "NetLoading": {
         "recognition": "OCR",
         "expected": "意识恢复中",
-        "post_delay":2000
+        "post_delay": 2000
     },
     "Entering": {
         "recognition": "TemplateMatch",
@@ -111,7 +111,6 @@
             "BlackKeyVIP",
             "Announcement",
             "Entering"
-            
         ]
     },
     "Downloading": {
@@ -127,7 +126,17 @@
     },
     "ClosePopup": {
         "recognition": "OCR",
-        "expected": ["不再弹出","再弹出","不再弹","今日不再弹出","日不再弹出","今日不再弹出功能模式","今日不再弹出功","今日不再弹出功能","今日不再弹出功能模"],
+        "expected": [
+            "不再弹出",
+            "再弹出",
+            "不再弹",
+            "今日不再弹出",
+            "日不再弹出",
+            "今日不再弹出功能模式",
+            "今日不再弹出功",
+            "今日不再弹出功能",
+            "今日不再弹出功能模"
+        ],
         "roi": [
             923,
             589,
@@ -136,7 +145,10 @@
         ],
         "action": "Click",
         "target": [
-            1148, 426, 123, 261
+            1148,
+            426,
+            123,
+            261
         ]
     },
     "EmotionDetection": {
@@ -146,7 +158,7 @@
             "EmotionDetectionFinish",
             "EmotionDetectionSelect"
         ],
-        "interrupt":[
+        "interrupt": [
             "ClosePopup",
             "BlackKeyVIP"
         ]
@@ -181,21 +193,26 @@
             400
         ]
     },
-    "IsEmotion":{
-        "recognition":"TemplateMatch",
-        "template":"StartUp/IsEmotion.png",
-        "next":[
+    "IsEmotion": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/IsEmotion.png",
+        "next": [
             "NeedEmotionDetection",
             "NoneedEmotionDetection"
         ],
-        "focus":true
+        "focus": true
     },
-    "NeedEmotionDetection":{
-        "recognition":"TemplateMatch",
-        "template":"StartUp/needTask.png",
-        "roi":[1033, 90, 51, 39],
-        "post_delay":3000,
-        "next":[
+    "NeedEmotionDetection": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/needTask.png",
+        "roi": [
+            1033,
+            90,
+            51,
+            39
+        ],
+        "post_delay": 3000,
+        "next": [
             "EmotionDetection"
         ],
         "interrupt": [
@@ -204,13 +221,18 @@
             "NetLoading"
         ]
     },
-    "NoneedEmotionDetection":{
-        "recognition":"TemplateMatch",
-        "template":"TaskBasics/needTask.png",
-        "inverse":true,
-        "roi":[1033, 90, 51, 39],
-        "post_delay":3000,
-        "next":[
+    "NoneedEmotionDetection": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/needTask.png",
+        "inverse": true,
+        "roi": [
+            1033,
+            90,
+            51,
+            39
+        ],
+        "post_delay": 3000,
+        "next": [
             "HomeFlag"
         ],
         "interrupt": [
@@ -222,7 +244,8 @@
     "BlackKeyVIP": {
         "recognition": "OCR",
         "expected": [
-            "点击领取今日黑钥贵宾","领取今日黑钥贵宾"
+            "点击领取今日黑钥贵宾",
+            "领取今日黑钥贵宾"
         ],
         "action": "Click",
         "target": [
