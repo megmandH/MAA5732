@@ -15,10 +15,7 @@
         "recognition": "OCR",
         "expected": ["有可领取友情点","可领取友情点","可领取"],
         "roi": [
-            736,
-            600,
-            157,
-            35
+            295,567,983,152
         ],
         "next": [
             "FriendPointsGet"
@@ -27,7 +24,7 @@
     "FriendPointsGet": {
         "recognition": "OCR",
         "expected": ["一键领取","键领取"],
-        "roi":[1014, 588, 187, 41],
+        "roi":[295,567,983,152],
         "action": "Click",
         "next": [
             "FriendFlag",
@@ -38,10 +35,7 @@
         "recognition": "OCR",
         "expected": ["有可赠送友情点","可赠送","可赠送友情点"],
         "roi": [
-            736,
-            600,
-            157,
-            35
+            295,567,983,152
         ],
         "next": [
             "FriendPointsSend"
@@ -51,10 +45,7 @@
         "recognition": "OCR",
         "expected": ["今日已领取","日已领取"],
         "roi": [
-            736,
-            600,
-            157,
-            35
+            295,567,983,152
         ],
         "next": [
             "HomeButton",
@@ -90,7 +81,7 @@
     "FriendPointsSend": {
         "recognition": "OCR",
         "expected": ["一键赠送","键赠送"],
-        "roi":[1014, 588, 187, 41],
+        "roi":[295,567,983,152],
         "action": "Click",
         "next": [
             "FriendFlag",

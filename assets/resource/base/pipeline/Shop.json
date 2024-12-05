@@ -123,13 +123,12 @@
     "ClickBuy":{
         "recognition":"OCR",
         "expected":"购买",
-        "rot":[870, 484, 249, 84],
         "action": "Click",
-        "target": [
-            885,
-            504,
-            219,
-            48
+        "target_offset": [
+            -49,
+            -6,
+            109,
+            13
         ],
         "post_delay": 1000,
         "next":[

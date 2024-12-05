@@ -5,6 +5,7 @@
         "action": "Click",
         "next": [
             "MissionFlag"
-        ]
+        ],
+        "post_delay":2000
     }
 }

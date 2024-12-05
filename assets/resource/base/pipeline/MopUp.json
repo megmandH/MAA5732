@@ -1,13 +1,10 @@
 {
     "MopUp": {
-        "recognition": "TemplateMatch",
-        "template": "TaskBasics/ConMopUp.png",
+        "recognition": "OCR",
+        "expected": ["连续扫荡"],
         "action": "Click",
         "roi": [
-            727,
-            608,
-            203,
-            91
+            261,604,1017,115
         ],
         "next": [
             "StartMopUp",
@@ -15,8 +12,8 @@
         ]
     },
     "StartMopUp": {
-        "recognition": "TemplateMatch",
-        "template": "TaskBasics/StartMopUp.png",
+        "recognition": "OCR",
+        "expected": ["开始扫荡"],
         "action": "Click",
         "next": [
             "ComMopUp"
@@ -77,14 +74,10 @@
         ],
         "method": 4,
         "lower": [
-            132,
-            0,
-            20
+            146,3,1
         ],
         "upper": [
-            143,
-            0,
-            21
+            235,15,19
         ],
         "count": 200,
         "connected": false,

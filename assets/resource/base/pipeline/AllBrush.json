@@ -5,20 +5,23 @@
         ]
     },
     "Dysmyth": {
-        "recognition": "TemplateMatch",
-        "template": "TaskBasics/Dysmyth.png",
+        "recognition": "OCR",
+        "expected": ["狄斯城"],
         "roi": [
-            616,
-            124,
-            651,
-            205
+            926,107,332,602
         ],
-        "action": "Click"
+        "action": "Click",
+        "target_offset":[
+            -141,2,141,-50
+        ]
     },
     "XiuRiver": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/XiuRiver.png",
-        "action": "Click"
+        "recognition": "OCR",
+        "expected": ["锈河"],
+        "action": "Click",
+        "target_offset":[
+            -57,0,55,2
+        ]
     },
     "狄斯币G-04":{
         "next":[

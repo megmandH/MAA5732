@@ -10,13 +10,14 @@
         ]
     },
     "DispatchFull": {
-        "recognition": "TemplateMatch",
-        "template": "TaskBasics/DispatchFull.png",
-        "roi": [
-            45,
-            392,
-            93,
-            47
+        "recognition": "OCR",
+        "expected": ["3"],
+        "roi": "AllReceive",
+        "roi_offset":[
+            35,
+            -107,
+            -102,
+            42
         ],
         "next": [
             "HomeButton",
@@ -27,12 +28,6 @@
         "recognition": "OCR",
         "expected": "一键领取",
         "action": "Click",
-        "roi": [
-            35,
-            485,
-            195,
-            46
-        ],
         "next": [
             "AllDispatch"
         ],
@@ -44,12 +39,6 @@
         "recognition": "OCR",
         "expected": "一键派遣",
         "action": "Click",
-        "roi": [
-            35,
-            485,
-            195,
-            46
-        ],
         "next": [
             "DispatchFull"
         ]

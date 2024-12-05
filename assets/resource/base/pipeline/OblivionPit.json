@@ -15,44 +15,29 @@
         "recognition": "OCR",
         "expected": "深阱残骸",
         "roi": [
-            17,
-            66,
-            218,
-            108
+            9,69,320,191
         ]
     },
     "IntoRotD": {
         "recognition": "OCR",
         "expected": "深阱残骸",
         "roi": [
-            579,
-            633,
-            121,
-            44
+            506,572,284,145
         ],
         "action": "Click",
         "target": [
-            600,
-            588,
-            82,
-            68
+            597,604,86,59
         ]
     },
     "IntoPit": {
         "recognition": "OCR",
         "expected": ["浊暗之阱","浊暗之","浊暗"],
         "roi": [
-            579,
-            633,
-            121,
-            44
+            506,572,284,145
         ],
         "action": "Click",
         "target": [
-            600,
-            588,
-            82,
-            68
+            597,604,86,59
         ],
         "next": [
             "ObliPitFlag"
@@ -62,10 +47,7 @@
         "recognition": "OCR",
         "expected": "浊暗之阱",
         "roi": [
-            25,
-            83,
-            199,
-            145
+            9,69,320,191
         ],
         "next": [
             "PitComplete",
@@ -75,18 +57,12 @@
     "ParadiseIllusion": {
         "recognition": "OCR",
         "expected": "乐园幻境",
-        "roi": [
-            1111,
-            532,
-            111,
-            35
-        ],
         "action": "Click",
-        "target": [
-            1008,
-            449,
-            117,
-            102
+        "target_offset": [
+            -97,
+            -90,
+            -13,
+            51
         ],
         "next": [
             "PitMopUp"
@@ -106,12 +82,9 @@
     },
     "BackPit": {
         "recognition": "OCR",
-        "expected": "本区域限制禁闭者",
+        "expected": ["选择禁闭者","本区域限制禁闭者","今日剩余免费次数0"],
         "roi": [
-            826,
-            72,
-            313,
-            45
+            129,96,1008,561
         ],
         "action": "Click",
         "target": [
@@ -128,10 +101,7 @@
         "recognition": "OCR",
         "expected": "0",
         "roi": [
-            35,
-            95,
-            180,
-            123
+            50,175,28,40
         ],
         "next": [
             "HomeButton",

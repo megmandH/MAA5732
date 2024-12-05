@@ -1,9 +1,4 @@
 {
-	"name": "MAA5732",
-	"version": "v1.0.0",
-	"url": "https://github.com/megmandH/MAA5732",
-	"default_controller": "adb",
-	"lock_controller": true,
 	"controller": [
 		{
 			"name": "ADB 默认方式",
@@ -13,7 +8,9 @@
 	"resource": [
 		{
 			"name": "官服",
-			"path": "{PROJECT_DIR}/resource/base"
+			"path": [
+				"{PROJECT_DIR}/resource/base"
+			]
 		},
 		{
 			"name": "B 服",

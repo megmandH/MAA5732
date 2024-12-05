@@ -48,17 +48,14 @@
     },
     "ClickFunctionMode": {
         "recognition": "OCR",
-        "expected": "功能模式",
+        "expected": "危机管理",
         "action": "Click"
     },
     "MissionFlag": {
         "recognition": "OCR",
         "expected": "副本掉落",
         "roi": [
-            1111,
-            276,
-            128,
-            44
+            854,148,401,258
         ],
         "next": [
             "Mission4",
@@ -68,10 +65,7 @@
     "Mission4": {
         "action": "Click",
         "target": [
-            993,
-            466,
-            117,
-            78
+            990,470,121,71
         ],
         "post_wait_freezes": 500,
         "next": [
@@ -83,12 +77,6 @@
     "ThingsGet": {
         "recognition": "OCR",
         "expected": "获得物资",
-        "roi": [
-            218,
-            17,
-            868,
-            378
-        ],
         "action": "Click",
         "target": [
             1109,
@@ -104,10 +92,7 @@
         "action": "Click",
         "threshold": 0.6,
         "roi": [
-            7,
-            8,
-            102,
-            75
+            11,12,314,65
         ],
         "post_delay": 500,
         "next": [
@@ -127,10 +112,7 @@
         "recognition": "TemplateMatch",
         "template": "TaskBasics/HomeButton.png",
         "roi": [
-            107,
-            12,
-            129,
-            64
+            11,12,314,65
         ],
         "post_delay": 500,
         "action": "Click",
@@ -140,12 +122,6 @@
         "recognition": "TemplateMatch",
         "template": [
             "HomeFlag/HomeFlag3.png"
-        ],
-        "roi": [
-            420,
-            578,
-            84,
-            117
         ]
     },
     "Mails":{
