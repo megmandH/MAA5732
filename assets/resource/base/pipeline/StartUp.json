@@ -5,13 +5,16 @@
             "EnterMBCC"
         ],
         "interrupt": [
-            "Announcement",
-            "PackageCheck",
             "5732Logo",
             "ZiYiLogo",
+            "Downloading",
+            "Announcement",
+            "PackageCheck",
             "Entering",
             "NetLoading",
             "NetworkError",
+            "ClosePopup",
+            "BlackKeyVIP",
             "StartApp"
         ]
     },
@@ -24,53 +27,31 @@
             "活动大厅"
         ],
         "next": [
-            "EmotionDetection",
-            "IsEmotion"
+            "HomeFlag"
         ],
         "interrupt": [
+            "EmotionDetection",
             "ClosePopup",
             "BlackKeyVIP",
+            "IsEmotion",
             "NetLoading"
             
-        ],
-        "timeout":10000
+        ]
     },
     "5732Logo": {
         "recognition": "TemplateMatch",
         "template": "StartUp/5732Logo.png",
-        "next": [
-            "PackageCheck",
-            "EnterMBCC",
-            "Announcement"
-        ],
-        "interrupt": [
-            "Downloading"
-        ]
+        "post_delay":1000
     },
     "ZiYiLogo": {
         "recognition": "TemplateMatch",
         "template": "StartUp/ZiYiLogo.png",
-        "next": [
-            "5732Logo",
-            "PackageCheck",
-            "EnterMBCC",
-            "Announcement"
-        ],
-        "interrupt": [
-            "Downloading"
-        ]
+        "post_delay":1000
     },
     "PackageCheck": {
         "recognition": "OCR",
         "expected": ["安装包检查中","包检查中"],
-        "next": [
-            "EnterMBCC",
-            "Announcement"
-        ],
-        "interrupt": [
-            "Downloading",
-            "NetLoading"
-        ]
+        "post_delay":1000
     },
     "NetLoading": {
         "recognition": "OCR",
@@ -80,7 +61,7 @@
     "Entering": {
         "recognition": "TemplateMatch",
         "template": "StartUp/Entering.png",
-        "post_delay":1000
+        "post_wait_freezes": 1000
     },
     "Announcement": {
         "recognition": "OCR",
@@ -91,9 +72,6 @@
             136,
             184,
             584
-        ],
-        "next": [
-            "EnterMBCC"
         ]
     },
     "StartApp": {
@@ -134,7 +112,8 @@
         "action": "Click",
         "target": [
             1148, 426, 123, 261
-        ]
+        ],
+        "post_wait_freezes":500
     },
     "EmotionDetection": {
         "recognition": "OCR",
@@ -296,6 +275,7 @@
             94,-14,-7,7
         ],
         "post_delay":3000,
+        "threshold":0.6,
         "next":[
             "EmotionDetection"
         ],
@@ -314,6 +294,7 @@
             94,-14,-7,7
         ],
         "post_delay":3000,
+        "threshold":0.6,
         "next":[
             "HomeFlag"
         ],
@@ -335,7 +316,8 @@
             0,
             0
         ],
-        "next": ["ThingsGet"]
+        "next": ["ThingsGet"],
+        "post_wait_freezes":500
     },
     "NetworkError": {
         "recognition": "OCR",

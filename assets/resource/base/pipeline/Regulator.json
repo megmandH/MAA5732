@@ -6,7 +6,8 @@
         "next": [
             "StartRegular",
             "AstRegulator"
-        ]
+        ],
+        "post_wait_freezes":500
     },
     "StartRegular": {
         "recognition": "TemplateMatch",
@@ -19,7 +20,8 @@
             -49
         ],
         "next": [
-            "Next"
+            "Next",
+            "StartRegular"
         ],
         "post_delay":500,
         "interrupt": [
