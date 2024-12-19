@@ -9,15 +9,18 @@
         "next": [
             "StartMopUp",
             "MopUp"
-        ]
+        ],
+        "post_wait_freezes": 1000
     },
     "StartMopUp": {
         "recognition": "OCR",
         "expected": ["开始扫荡"],
         "action": "Click",
         "next": [
-            "ComMopUp"
-        ]
+            "ComMopUp",
+            "StartMopUp"
+        ],
+        "post_wait_freezes":1000
     },
     "ComMopUp": {
         "recognition": "OCR",
@@ -25,7 +28,8 @@
         "next": [
             "MopUpAgain_color",
             "ClickFinish"
-        ]
+        ],
+        "post_wait_freezes":1000
     },
     "ClickFinish": {
         "recognition":"OCR",

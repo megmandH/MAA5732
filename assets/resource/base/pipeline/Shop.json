@@ -123,6 +123,7 @@
     "ClickBuy":{
         "recognition":"OCR",
         "expected":"购买",
+        "roi":[859,519,256,96],
         "action": "Click",
         "target_offset": [
             -49,
@@ -147,7 +148,6 @@
     "友情点购买":{
         "recognition":"OCR",
         "expected":"兑换中心",
-        "roi":"Shop",
         "action":"Click",
         "next":[
             "友情商店"
@@ -174,7 +174,6 @@
     "友情商店":{
         "recognition":"OCR",
         "expected":"友情兑换",
-        "roi":"Shop",
         "action":"Click",
         "next":[
             "每日友情点限购"
@@ -305,12 +304,15 @@
     "ReSlideButton":{
         "recognition":"TemplateMatch",
         "template":"Shop/SlideButton.png",
-        "next":["SlideButton"]
+        "roi":[666,400,451,122],
+        "next":[
+            "SlideButton"
+        ]
     },
     "SlideButton":{
         "action":"Swipe",
         "begin":"ReSlideButton",
-        "end":[991, 410, 36, 29],
+        "end":[1000,417,158,112],
         "next":[
             "ClickBuy"
         ]

@@ -72,12 +72,10 @@
         "recognition": "TemplateMatch",
         "template": "TaskBasics/PitMopUp.png",
         "action": "Click",
-        "post_delay":500,
+        "post_wait_freezes":1000,
         "next": [
+            "ThingsGet_forPit",
             "BackPit"
-        ],
-        "interrupt": [
-            "ThingsGet"
         ]
     },
     "BackPit": {
@@ -95,9 +93,39 @@
         ],
         "next": [
             "PitComplete"
+        ],
+        "post_wait_freezes":500
+    },
+    "ThingsGet_forPit": {
+        "recognition": "OCR",
+        "expected": "获得物资",
+        "action": "Click",
+        "target": [
+            1109,
+            521,
+            150,
+            181
+        ],
+        "pre_delay": 500,
+        "next":[
+            "BackPit",
+            "PitComplete"
+            
         ]
     },
     "PitComplete": {
+        "recognition": "OCR",
+        "expected": "扫荡",
+        "inverse":true,
+        "roi": [
+            1110,471,151,71
+        ],
+        "next": [
+            "HomeButton",
+            "Back"
+        ]
+    },
+    "PitComplete_old": {
         "recognition": "OCR",
         "expected": "0",
         "roi": [

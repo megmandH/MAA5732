@@ -11,9 +11,7 @@
             926,107,332,602
         ],
         "action": "Click",
-        "target_offset":[
-            -141,2,141,-50
-        ]
+        "post_wait_freezes":1000
     },
     "XiuRiver": {
         "recognition": "OCR",
@@ -41,7 +39,8 @@
         "next": [
             "G_04_Flag",
             "淘金狂热"
-        ]
+        ],
+        "post_wait_freezes":500
     },
     "G_04_Flag":{
         "recognition":"TemplateMatch",
@@ -70,7 +69,8 @@
         "next": [
             "C_04_Flag",
             "恶兆之种"
-        ]
+        ],
+        "post_wait_freezes":500
     },
     "C_04_Flag":{
         "recognition":"TemplateMatch",
@@ -284,7 +284,8 @@
     "帕尔马废墟":{
         "recognition": "TemplateMatch",
         "template": "Combat/帕尔马废墟.png",
-        "action": "Click"
+        "action": "Click",
+        "post_wait_freezes":500
     },
     "技能本P-04":{
         "next":[

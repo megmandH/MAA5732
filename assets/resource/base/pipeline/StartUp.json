@@ -2,18 +2,19 @@
     "Start5732": {
         "next": [
             "Home",
-            "EnterMBCC"
-        ],
-        "interrupt": [
-            "5732Logo",
-            "ZiYiLogo",
-            "Downloading",
+            "EnterMBCC",
             "Announcement",
+            "5732Logo",
+            "ZiYiLogo"
+        ],
+        "interrupt": [     
+            "Downloading",
             "PackageCheck",
             "Entering",
             "NetLoading",
             "NetworkError",
             "ClosePopup",
+            "CloseBlackKeyVIP",
             "BlackKeyVIP",
             "StartApp"
         ]
@@ -33,6 +34,8 @@
             "EmotionDetection",
             "ClosePopup",
             "BlackKeyVIP",
+            "CloseBlackKeyVIP",
+            "CloseTidesofAsh",
             "IsEmotion",
             "NetLoading"
             
@@ -41,27 +44,43 @@
     "5732Logo": {
         "recognition": "TemplateMatch",
         "template": "StartUp/5732Logo.png",
-        "post_delay":1000
+        "post_wait_freezes":4000,
+        "next":[
+            "Home",
+            "EnterMBCC",
+            "Announcement"
+        ],
+        "interrupt": [     
+            "Downloading",
+            "PackageCheck",
+            "Entering",
+            "NetLoading",
+            "NetworkError",
+            "ClosePopup",
+            "CloseBlackKeyVIP",
+            "BlackKeyVIP"
+        ]
     },
     "ZiYiLogo": {
         "recognition": "TemplateMatch",
         "template": "StartUp/ZiYiLogo.png",
-        "post_delay":1000
-    },
-    "PackageCheck": {
-        "recognition": "OCR",
-        "expected": ["安装包检查中","包检查中"],
-        "post_delay":1000
-    },
-    "NetLoading": {
-        "recognition": "OCR",
-        "expected": "意识恢复中",
-        "post_delay":2000
-    },
-    "Entering": {
-        "recognition": "TemplateMatch",
-        "template": "StartUp/Entering.png",
-        "post_wait_freezes": 1000
+        "post_wait_freezes":1000,
+        "next":[
+            "Home",
+            "EnterMBCC",
+            "Announcement",
+            "5732Logo"
+        ],
+        "interrupt": [     
+            "Downloading",
+            "PackageCheck",
+            "Entering",
+            "NetLoading",
+            "NetworkError",
+            "ClosePopup",
+            "CloseBlackKeyVIP",
+            "BlackKeyVIP"
+        ]
     },
     "Announcement": {
         "recognition": "OCR",
@@ -72,22 +91,60 @@
             136,
             184,
             584
+        ],
+        "next":[
+            "Home",
+            "EnterMBCC",
+            "Announcement"
+        ],
+        "interrupt": [
+            "Entering",
+            "NetLoading",
+            "NetworkError",
+            "ClosePopup",
+            "CloseBlackKeyVIP",
+            "BlackKeyVIP"
         ]
     },
+    "PackageCheck": {
+        "recognition": "OCR",
+        "expected": ["安装包检查中","包检查中"],
+        "post_wait_freezes":1000
+    },
+    "NetLoading": {
+        "recognition": "OCR",
+        "expected": "意识恢复中",
+        "post_wait_freezes":2000
+    },
+    "Entering": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/Entering.png",
+        "post_wait_freezes": 1000
+    },    
     "StartApp": {
         "action": "StartApp",
         "package": "com.zy.wqmt.cn/com.papegames.gamelib_unity.BaseUnityImplActivity",
         "post_delay": 4000
     },
     "EnterMBCC": {
+        "doc":"登录界面点击进入管理局",
         "recognition": "OCR",
         "expected": [
             "进入管理局",
-            "管理局"
+            "进入管理",
+            "入管理局"
         ],
         "action": "Click",
-        "next":["Home"],
-        "interrupt":["Entering"]
+        "next":[
+            "Home"
+        ],
+        "interrupt":[
+            "Entering",
+            "NetLoading",
+            "NetworkError",
+            "ClosePopup",
+            "BlackKeyVIP"
+        ]
     },
     "Downloading": {
         "recognition": "OCR",
@@ -98,7 +155,7 @@
             220,
             22
         ],
-        "post_delay": 2000
+        "post_wait_freezes": 2000
     },
     "ClosePopup": {
         "recognition": "OCR",
@@ -113,7 +170,7 @@
         "target": [
             1148, 426, 123, 261
         ],
-        "post_wait_freezes":500
+        "post_wait_freezes":1000
     },
     "EmotionDetection": {
         "recognition": "OCR",
@@ -138,7 +195,8 @@
             70,
             340,
             100
-        ]
+        ],
+        "post_wait_freezes":1000
     },
     "EmotionDetectionFinish": {
         "recognition": "OCR",
@@ -150,7 +208,7 @@
             400
         ],
         "next":[
-            "情绪检测累计奖励"
+            "EmotionDetectionAccumulateAward"
         ]
     },
     "CloseEmotionDetection": {
@@ -162,31 +220,31 @@
             400
         ]
     },
-    "情绪检测累计奖励":{
+    "EmotionDetectionAccumulateAward":{
         "recognition":"OCR",
         "expected":["累计奖励"],
         "next":[
-            "领取情绪检测2天累计奖励",
-            "领取情绪检测8天累计奖励",
-            "领取情绪检测15天累计奖励",
-            "领取情绪检测25天累计奖励",
+            "EmotionDetection2DayAward",
+            "EmotionDetection8DayAward",
+            "EmotionDetection15DayAward",
+            "EmotionDetection25DayAward",
             "CloseEmotionDetection"
         ]
     },
     
-    "领取情绪检测2天累计奖励":{
+    "EmotionDetection2DayAward":{
         "recognition":"OCR",
         "expected":["2","8","15","25"],
-        "roi":"情绪检测累计奖励",
+        "roi":"EmotionDetectionAccumulateAward",
         "roi_offset":[
-            -9,
-            -49,
-            -44,
-            23
+            -34,
+            -51,
+            -18,
+            28
         ],
         "index":0,
         "action":"Click",
-        "target":"情绪检测累计奖励",
+        "target":"EmotionDetectionAccumulateAward",
         "target_offset":[
             223,
             -52,
@@ -195,19 +253,19 @@
         ],
         "next":["CloseEmotionDetection"]
     },
-    "领取情绪检测8天累计奖励":{
+    "EmotionDetection8DayAward":{
         "recognition":"OCR",
         "expected":["2","8","15","25"],
-        "roi":"情绪检测累计奖励",
+        "roi":"EmotionDetectionAccumulateAward",
         "roi_offset":[
-            -9,
-            -49,
-            -44,
-            23
+            -34,
+            -51,
+            -18,
+            28
         ],
         "index":1,
         "action":"Click",
-        "target":"情绪检测累计奖励",
+        "target":"EmotionDetectionAccumulateAward",
         "target_offset":[
             370,
             -52,
@@ -216,40 +274,40 @@
         ],
         "next":["CloseEmotionDetection"]
     },
-    "领取情绪检测15天累计奖励":{
+    "EmotionDetection15DayAward":{
         "recognition":"OCR",
         "expected":["2","8","15","25"],
-        "roi":"情绪检测累计奖励",
+        "roi":"EmotionDetectionAccumulateAward",
         "roi_offset":[
-            -9,
-            -49,
-            -44,
-            23
+            -34,
+            -51,
+            -18,
+            28
         ],
         "index":2,
         "action":"Click",
-        "target":"情绪检测累计奖励",
+        "target":"EmotionDetectionAccumulateAward",
         "target_offset":[
-            517,
-            -52,
-            -14,
-            42
+            -34,
+            -51,
+            -18,
+            28
         ],
         "next":["CloseEmotionDetection"]
     },
-    "领取情绪检测25天累计奖励":{
+    "EmotionDetection25DayAward":{
         "recognition":"OCR",
         "expected":["2","8","15","25"],
-        "roi":"情绪检测累计奖励",
+        "roi":"EmotionDetectionAccumulateAward",
         "roi_offset":[
-            -9,
-            -49,
-            -44,
-            23
+            -34,
+            -51,
+            -18,
+            28
         ],
         "index":3,
         "action":"Click",
-        "target":"情绪检测累计奖励",
+        "target":"EmotionDetectionAccumulateAward",
         "target_offset":[
             664,
             -52,
@@ -316,23 +374,62 @@
             0,
             0
         ],
-        "next": ["ThingsGet"],
-        "post_wait_freezes":500
+        "next": ["ThingsGet","CloseBlackKeyVIP"],
+        "post_wait_freezes":1000
+    },
+    "CloseBlackKeyVIP": {
+        "recognition": "OCR",
+        "expected": [
+            "您的月卡还有2天到期","是否立即前往续费"
+        ],
+        "next": ["ClickCancel"],
+        "post_wait_freezes":2000
+    },
+    "CloseTidesofAsh":{
+        "recognition": "OCR",
+        "expected": [
+            "灰烬之潮","灰烬使徒","侵袭"
+        ],
+        "next":[
+            "ClickOK"
+        ],
+        "post_delay": 1000
     },
     "NetworkError": {
         "recognition": "OCR",
         "expected": ["发生未知错误","请稍后再试","与服务器失去连接","请重新登录"],
         "roi":[282,145,716,438],
         "next":[
-            "点击确定"
+            "ClickOK"
         ],
         "post_delay": 2000
     },
-    "点击确定": {
+    "UpdatingError":{
+        "recognition":"OCR",
+        "expected":["获取更新服务器地址失败"],
+        "roi":[282,145,716,438],
+        "next":["ClickOut"],
+        "post_delay": 2000
+
+    },
+    "ClickOK": {
         "recognition": "OCR",
         "expected": "确定",
         "roi":[282,145,716,438],
         "action": "Click"
+    },
+    "ClickCancel": {
+        "recognition": "OCR",
+        "expected": "取消",
+        "roi":[282,145,716,438],
+        "action": "Click"
+    },
+    "ClickOut":{
+        "recognition": "OCR",
+        "expected": "退出",
+        "roi":[282,145,716,438],
+        "action": "Click"
+
     }
 
 }
