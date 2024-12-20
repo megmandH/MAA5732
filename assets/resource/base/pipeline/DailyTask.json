@@ -205,22 +205,18 @@
         "expected":["监察任务","监察任"],
         "roi":[174, 643, 303, 73],
         "action":"Click",
-        "next":["监察密令已领取完毕"],
+        "next":["监察任务已领取完毕"],
         "interrupt":[
             "有每日监察任务奖励",
             "有每周监察任务奖励",
-            "有密令任务奖励",
-            "领取监察密令奖励"
+            "有密令任务奖励"
         ]
     },
     "监察任务已领取完毕":{
         "recognition":"TemplateMatch",
         "template":"TaskBasics/needTask.png",
         "inverse":true,
-        "roi":[1,648,1278,71],
-        "next":[
-            "监察密令已领取完毕"
-        ]
+        "roi":[3,648,621,71]
     },
     "监察密令已领取完毕":{
         "recognition":"TemplateMatch",
