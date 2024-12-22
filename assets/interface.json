@@ -1,7 +1,13 @@
 {
   "name": "MAA5732",
-  "version": "v1.0.0",
+  "version": "v1.1.2",
   "url": "",
+  "controller": [
+		{
+			"name": "ADB 默认方式",
+			"type": "Adb"
+		}
+	],
   "resource": [
     {
       "name": "官服",

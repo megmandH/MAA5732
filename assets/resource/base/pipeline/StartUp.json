@@ -181,7 +181,8 @@
         "interrupt":[
             "EmotionDetectionSelect",
             "ClosePopup",
-            "BlackKeyVIP"
+            "BlackKeyVIP",
+            "EmotionDirectSelect"
         ]
     },
     "EmotionDetectionSelect": {
@@ -196,6 +197,14 @@
             340,
             100
         ],
+        "post_wait_freezes":1000
+    },
+    "EmotionDirectSelect": {
+        "action": "Click",
+        "target": [
+            630,374,365,134
+        ],
+        "pre_wait_freezes":500,
         "post_wait_freezes":1000
     },
     "EmotionDetectionFinish": {
