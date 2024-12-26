@@ -21,8 +21,7 @@
             "AstFriend",
             "AstRegulator",
             "AstSecretSociety",
-            "AstStormy",
-            "Mails"
+            "AstStormy"
         ]
 
     },
@@ -37,8 +36,7 @@
             "监管事件",
             "秘盟捐赠次数",
             "记忆风暴次数",
-            "体力专属补给",
-            "邮件"
+            "体力专属补给"
         ]
     },
     "ClickAssistMode": {
@@ -140,6 +138,7 @@
         "expected":["快速处理","速处理"],
         "action":"Click",
         "next":[
+            "HandleMails",
             "HomeButton",
             "Back"
         ],
@@ -281,8 +280,22 @@
         "action":"Click",
         "next":["领取完毕"],
         "interrupt":[
-            "一键领取"
+            "一键领取",
+            "ThingsGet"
+            
+            
         ]
+    },
+    "监察嘉奖二选一":{
+        "recognition":"OCR",
+        "expected":["批量选择"],
+        "roi":[700,471,225,83],
+        "action":"Click",
+        "next":[
+            "ClickOK"
+        ],
+        "post_delay":1000
+
     },
     "领取完毕":{
         "recognition":"OCR",
@@ -296,7 +309,8 @@
         "action":"Click",
         "roi":[468,567,811,152],
         "next":[
-            "ThingsGet"
+            "ThingsGet",
+            "监察嘉奖二选一"
         ]
     }
 }
