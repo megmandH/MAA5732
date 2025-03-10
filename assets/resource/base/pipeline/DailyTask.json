@@ -3,17 +3,19 @@
         "next": [
             "AssistMode"
         ],
-        "interrupt":[
+        "interrupt": [
             "ClickAssistMode"
         ]
     },
-    "AssistMode":{
-        "recognition":"OCR",
-        "expected":["夜莺助手"],
-        "next":[
+    "AssistMode": {
+        "recognition": "OCR",
+        "expected": [
+            "夜莺助手"
+        ],
+        "next": [
             "AssistTaskFlag"
         ],
-        "interrupt":[
+        "interrupt": [
             "Receive",
             "AstDispatch",
             "AstFreeShop",
@@ -21,9 +23,9 @@
             "AstFriend",
             "AstRegulator",
             "AstSecretSociety",
-            "AstStormy"
+            "AstStormy",
+            "AstMails"
         ]
-
     },
     "AssistTaskFlag": {
         "recognition": "OCR",
@@ -36,7 +38,8 @@
             "监管事件",
             "秘盟捐赠次数",
             "记忆风暴次数",
-            "体力专属补给"
+            "体力专属补给",
+            "新邮件"
         ]
     },
     "ClickAssistMode": {
@@ -53,7 +56,10 @@
         "recognition": "OCR",
         "expected": "副本掉落",
         "roi": [
-            854,148,401,258
+            854,
+            148,
+            401,
+            258
         ],
         "next": [
             "Mission4",
@@ -63,7 +69,10 @@
     "Mission4": {
         "action": "Click",
         "target": [
-            990,470,121,71
+            990,
+            470,
+            121,
+            71
         ],
         "post_wait_freezes": 500,
         "next": [
@@ -90,7 +99,10 @@
         "action": "Click",
         "threshold": 0.6,
         "roi": [
-            11,12,314,65
+            11,
+            12,
+            314,
+            65
         ],
         "post_delay": 500,
         "next": [
@@ -106,11 +118,22 @@
             "ThingsGet"
         ]
     },
+    "AstMails": {
+        "recognition": "OCR",
+        "expected": "收到新邮件",
+        "action": "Click",
+        "next": [
+            "HandleMails"
+        ]
+    },
     "HomeButton": {
         "recognition": "TemplateMatch",
         "template": "TaskBasics/HomeButton.png",
         "roi": [
-            11,12,314,65
+            11,
+            12,
+            314,
+            65
         ],
         "post_delay": 1000,
         "action": "Click",
@@ -125,190 +148,312 @@
             "HomeFlag/HomeFlag3.png"
         ]
     },
-    "Mails":{
-        "recognition":"OCR",
-        "expected":["收到新邮件","新邮件","邮件"],
-        "action":"Click",
-        "next":[
+    "Mails": {
+        "recognition": "OCR",
+        "expected": [
+            "收到新邮件",
+            "新邮件",
+            "邮件"
+        ],
+        "action": "Click",
+        "next": [
             "HandleMails"
         ]
     },
-    "HandleMails":{
-        "recognition":"OCR",
-        "expected":["快速处理","速处理"],
-        "action":"Click",
-        "next":[
-            "HandleMails",
-            "HomeButton",
-            "Back"
+    "HandleMails": {
+        "recognition": "OCR",
+        "expected": [
+            "快速处理",
+            "速处理"
         ],
-        "interrupt":[
-            "ThingsGet"
+        "roi": [
+            287,
+            645,
+            141,
+            35
         ],
-        "post_delay":1000
-    },
-    "SlideUp":{
-        "action": "Swipe",
-        "begin": [
-            113, 457, 112, 47
-            
-        ],
-        "end": [
-            105, 268, 116, 53
-        ],
-        "post_wait_freezes":3000
-    },
-    "领取监察密令":{
-        "recognition":"OCR",
-        "expected":"监察密令",
-        "roi":[1099,518,175,126],
-        "action":"Click",
-        "post_delay":1000,
-        "next":[
-            "监察密令已领取完毕"
-        ],
-        "interrupt":[
-            "有监察任务奖励",
-            "有监察密令奖励"
-            
+        "action": "Click",
+        "next": [
+            "ThingsGet_forMails",
+            "HandleMails"
         ]
     },
-    "有监察任务奖励":{
-        "recognition":"TemplateMatch",
-        "template":"TaskBasics/needTask.png",
-        "roi":[169,650,314,69],
-        "next":[
+    "ThingsGet_forMails": {
+        "recognition": "OCR",
+        "expected": "获得物资",
+        "action": "Click",
+        "target": [
+            1109,
+            521,
+            150,
+            181
+        ],
+        "pre_delay": 500,
+        "next": [
+            "HomeButton",
+            "Back"
+        ]
+    },
+    "SlideUp": {
+        "action": "Swipe",
+        "begin": [
+            113,
+            457,
+            112,
+            47
+        ],
+        "end": [
+            105,
+            268,
+            116,
+            53
+        ],
+        "post_wait_freezes": 3000
+    },
+    "领取监察密令": {
+        "recognition": "OCR",
+        "expected": "监察密令",
+        "roi": [
+            1099,
+            518,
+            175,
+            126
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": [
+            "监察密令已领取完毕"
+        ],
+        "interrupt": [
+            "有监察任务奖励",
+            "有监察密令奖励"
+        ]
+    },
+    "有监察任务奖励": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/needTask.png",
+        "roi": [
+            169,
+            650,
+            314,
+            69
+        ],
+        "next": [
             "领取监察任务奖励"
         ]
     },
-    "有监察密令奖励":{
-        "recognition":"TemplateMatch",
-        "template":"TaskBasics/needTask.png",
-        "roi":[776,649,397,70],
-        "next":[
+    "有监察密令奖励": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/needTask.png",
+        "roi": [
+            776,
+            649,
+            397,
+            70
+        ],
+        "next": [
             "领取监察密令奖励"
         ]
     },
-    "领取监察密令奖励":{
-        "recognition":"OCR",
-        "expected":["监察密令","监察密","监察"],
-        "roi":[642, 642, 567, 77],
-        "action":"Click",
-        "next":["领取完毕"],
-        "interrupt":[
+    "领取监察密令奖励": {
+        "recognition": "OCR",
+        "expected": [
+            "监察密令",
+            "监察密",
+            "监察"
+        ],
+        "roi": [
+            642,
+            642,
+            567,
+            77
+        ],
+        "action": "Click",
+        "next": [
+            "领取完毕"
+        ],
+        "interrupt": [
             "一键领取"
         ]
     },
-    "领取监察任务奖励":{
-        "recognition":"OCR",
-        "expected":["监察任务","监察任"],
-        "roi":[174, 643, 303, 73],
-        "action":"Click",
-        "next":["监察任务已领取完毕"],
-        "interrupt":[
+    "领取监察任务奖励": {
+        "recognition": "OCR",
+        "expected": [
+            "监察任务",
+            "监察任"
+        ],
+        "roi": [
+            174,
+            643,
+            303,
+            73
+        ],
+        "action": "Click",
+        "next": [
+            "监察任务已领取完毕"
+        ],
+        "interrupt": [
             "有每日监察任务奖励",
             "有每周监察任务奖励",
             "有密令任务奖励"
         ]
     },
-    "监察任务已领取完毕":{
-        "recognition":"TemplateMatch",
-        "template":"TaskBasics/needTask.png",
-        "inverse":true,
-        "roi":[3,648,621,71]
+    "监察任务已领取完毕": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/needTask.png",
+        "inverse": true,
+        "roi": [
+            3,
+            648,
+            621,
+            71
+        ]
     },
-    "监察密令已领取完毕":{
-        "recognition":"TemplateMatch",
-        "template":"TaskBasics/needTask.png",
-        "inverse":true,
-        "roi":[1,648,1278,71],
-        "next":[
+    "监察密令已领取完毕": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/needTask.png",
+        "inverse": true,
+        "roi": [
+            1,
+            648,
+            1278,
+            71
+        ],
+        "next": [
             "HomeButton",
             "Back"
         ]
     },
-    "有每日监察任务奖励":{
-        "recognition":"TemplateMatch",
-        "template":"TaskBasics/needTask.png",
-        "roi":[449,162,27,27],
-        "next":[
+    "有每日监察任务奖励": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/needTask.png",
+        "roi": [
+            449,
+            162,
+            27,
+            27
+        ],
+        "next": [
             "领取每日监察任务奖励"
         ]
     },
-    "有每周监察任务奖励":{
-        "recognition":"TemplateMatch",
-        "template":"TaskBasics/needTask.png",
-        "roi":[443,245,36,34],
-        "next":[
+    "有每周监察任务奖励": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/needTask.png",
+        "roi": [
+            443,
+            245,
+            36,
+            34
+        ],
+        "next": [
             "领取每周监察任务奖励"
         ]
     },
-    "有密令任务奖励":{
-        "recognition":"TemplateMatch",
-        "template":"TaskBasics/needTask.png",
-        "roi":[435,328,51,40],
-        "next":[
+    "有密令任务奖励": {
+        "recognition": "TemplateMatch",
+        "template": "TaskBasics/needTask.png",
+        "roi": [
+            435,
+            328,
+            51,
+            40
+        ],
+        "next": [
             "领取密令任务奖励"
         ]
     },
-    "领取每日监察任务奖励":{
-        "recognition":"OCR",
-        "expected":"每日",
-        "roi":[345,142,137,330],
-        "action":"Click",
-        "next":[
+    "领取每日监察任务奖励": {
+        "recognition": "OCR",
+        "expected": "每日",
+        "roi": [
+            345,
+            142,
+            137,
+            330
+        ],
+        "action": "Click",
+        "next": [
             "领取完毕"
         ],
-        "interrupt":[
+        "interrupt": [
             "一键领取"
         ]
     },
-    "领取每周监察任务奖励":{
-        "recognition":"OCR",
-        "expected":"每周",
-        "roi":[345,142,137,330],
-        "action":"Click",
-        "next":["领取完毕"],
-        "interrupt":[
+    "领取每周监察任务奖励": {
+        "recognition": "OCR",
+        "expected": "每周",
+        "roi": [
+            345,
+            142,
+            137,
+            330
+        ],
+        "action": "Click",
+        "next": [
+            "领取完毕"
+        ],
+        "interrupt": [
             "一键领取"
         ]
     },
-    "领取密令任务奖励":{
-        "recognition":"OCR",
-        "expected":"密令",
-        "roi":[345,142,137,330],
-        "action":"Click",
-        "next":["领取完毕"],
-        "interrupt":[
+    "领取密令任务奖励": {
+        "recognition": "OCR",
+        "expected": "密令",
+        "roi": [
+            345,
+            142,
+            137,
+            330
+        ],
+        "action": "Click",
+        "next": [
+            "领取完毕"
+        ],
+        "interrupt": [
             "一键领取",
             "ThingsGet"
-            
-            
         ]
     },
-    "监察嘉奖二选一":{
-        "recognition":"OCR",
-        "expected":["批量选择"],
-        "roi":[700,471,225,83],
-        "action":"Click",
-        "next":[
+    "监察嘉奖二选一": {
+        "recognition": "OCR",
+        "expected": [
+            "批量选择"
+        ],
+        "roi": [
+            700,
+            471,
+            225,
+            83
+        ],
+        "action": "Click",
+        "next": [
             "ClickOK"
         ],
-        "post_delay":1000
-
+        "post_delay": 1000
     },
-    "领取完毕":{
-        "recognition":"OCR",
-        "expected":"一键领取",
-        "inverse":true,
-        "roi":[468,567,811,152]
+    "领取完毕": {
+        "recognition": "OCR",
+        "expected": "一键领取",
+        "inverse": true,
+        "roi": [
+            468,
+            567,
+            811,
+            152
+        ]
     },
-    "一键领取":{
-        "recognition":"OCR",
-        "expected":"一键领取",
-        "action":"Click",
-        "roi":[468,567,811,152],
-        "next":[
+    "一键领取": {
+        "recognition": "OCR",
+        "expected": "一键领取",
+        "action": "Click",
+        "roi": [
+            468,
+            567,
+            811,
+            152
+        ],
+        "next": [
             "ThingsGet",
             "监察嘉奖二选一"
         ]

@@ -4,8 +4,18 @@
         "expected": "有记忆风暴次数可用",
         "action": "Click",
         "next": [
-            "MissionFlag"
+            "Mission5"
         ],
-        "post_delay":2000
+        "post_delay": 2000
+    },
+    "Mission5": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/Mission5.png",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "MopUp",
+            "Mission5"
+        ]
     }
 }

@@ -14,6 +14,8 @@
         "action": "Click",
         "post_delay": 1000,
         "next": [
+            "FreeGet",
+            "AlreadyGet",
             "SwapShop"
         ]
     },
@@ -85,12 +87,6 @@
         "recognition": "TemplateMatch",
         "template": "Shop/FreeGet.png",
         "action": "Click",
-        "roi": [
-            245,
-            414,
-            1033,
-            301
-        ],
         "target_offset": [
             -78,
             -57,
@@ -112,18 +108,25 @@
             83
         ],
         "next": [
-            "AlreadyGet"
+            "AlreadyGet",
+            "FreeGet",
+            "HomeButton",
+            "Back"
         ],
-        "interrupt":[
+        "interrupt": [
             "ClickBuy",
             "ThingsGet"
         ]
-        
     },
-    "ClickBuy":{
-        "recognition":"OCR",
-        "expected":"购买",
-        "roi":[859,519,256,96],
+    "ClickBuy": {
+        "recognition": "OCR",
+        "expected": "购买",
+        "roi": [
+            859,
+            519,
+            256,
+            96
+        ],
         "action": "Click",
         "target_offset": [
             -49,
@@ -132,31 +135,46 @@
             13
         ],
         "post_delay": 1000,
-        "next":[
+        "next": [
             "ThingsGet"
         ]
     },
-    "进入采购办":{
-        "recognition":"OCR",
-        "expected":["采购办"],
-        "action":"Click",
-        "next":[
+    "AstFriendShop": {
+        "recognition": "OCR",
+        "expected": "可通过友情点兑换",
+        "action": "Click",
+        "post_delay": 500,
+        "next": [
+            "每日友情点限购"
+        ]
+    },
+    "FriendShop": {
+        "recognition": "TemplateMatch",
+        "template": "/Shop/FriendPoints.png",
+        "next": "每日友情点限购"
+    },
+    "进入采购办": {
+        "recognition": "OCR",
+        "expected": [
+            "采购办"
+        ],
+        "action": "Click",
+        "next": [
             "友情点购买"
         ]
-
     },
-    "友情点购买":{
-        "recognition":"OCR",
-        "expected":"兑换中心",
-        "action":"Click",
-        "next":[
+    "友情点购买": {
+        "recognition": "OCR",
+        "expected": "兑换中心",
+        "action": "Click",
+        "next": [
             "友情商店"
         ],
-        "interrupt":[
+        "interrupt": [
             "SlideUp"
         ]
     },
-    "上下滑动商店":{
+    "上下滑动商店": {
         "action": "Swipe",
         "begin": [
             922,
@@ -171,149 +189,251 @@
             80
         ]
     },
-    "友情商店":{
-        "recognition":"OCR",
-        "expected":"友情兑换",
-        "action":"Click",
-        "next":[
+    "友情商店": {
+        "recognition": "OCR",
+        "expected": "友情兑换",
+        "action": "Click",
+        "next": [
             "每日友情点限购"
         ]
     },
-    "每日友情点限购":{
-        "recognition":"TemplateMatch",
-        "template":"Shop/FriendPoints.png",
-        "roi": [1121, 29, 52, 47],
-        "next":[
-            "没有识别到每日限购"
+    "每日友情点限购": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/FriendPoints.png",
+        "roi": [
+            1121,
+            29,
+            52,
+            47
         ],
-        "interrupt":[
-            "友情商店记忆碎片",
-            "友情商店狂乱精粹",
-            "友情商店狄斯币"
+        "next": [
+            "已售罄_color"
+        ],
+        "interrupt": [
+            "友情商店购买"
         ]
     },
-    "没有识别到每日限购":{
-        "recognition":"OCR",
-        "expected":["狂乱精粹","狄斯币","记忆碎片"],
-        "inverse":true,
-        "next":[
+    "已售罄": {
+        "recognition": "OCR",
+        "expected": "已售罄",
+        "roi": [
+            449,
+            487,
+            66,
+            23
+        ],
+        "next": [
             "HomeButton",
             "Back"
         ]
     },
-    "友情商店记忆碎片":{
-        "recognition":"OCR",
-        "expected":["记忆碎片"],
-        "next":[
+    "已售罄_color": {
+        "recognition": "ColorMatch",
+        "roi": [
+            997,
+            448,
+            117,
+            66
+        ],
+        "method": 4,
+        "lower": [
+            67,
+            68,
+            69
+        ],
+        "upper": [
+            84,
+            85,
+            86
+        ],
+        "next": [
+            "HomeButton",
+            "Back"
+        ]
+    },
+    "友情商店购买": {
+        "action": "Click",
+        "target": [
+            388,
+            433,
+            181,
+            102
+        ],
+        "next": [
+            "ReSlideButton"
+        ]
+    },
+    "没有识别到限购": {
+        "recognition": "OCR",
+        "expected": [
+            "狂乱精粹",
+            "狄斯币",
+            "记忆碎片",
+            "搜索令",
+            "一阶源素",
+            "低阶材料",
+            "技能模组"
+        ],
+        "inverse": true,
+        "next": [
+            "HomeButton",
+            "Back"
+        ]
+    },
+    "友情商店记忆碎片": {
+        "recognition": "OCR",
+        "expected": [
+            "记忆碎片"
+        ],
+        "next": [
             "记忆碎片已售罄",
             "购买记忆碎片"
         ]
-
     },
-    "购买记忆碎片":{
-        "action":"Click",
-        "target":"友情商店记忆碎片",
-        "target_offset":[
-            -110,0,50,160
+    "购买记忆碎片": {
+        "action": "Click",
+        "target": "友情商店记忆碎片",
+        "target_offset": [
+            -110,
+            0,
+            50,
+            160
         ],
-        "next":[
+        "next": [
             "ReSlideButton"
-            
         ]
     },
-    "记忆碎片已售罄":{
-        "recognition":"OCR",
-        "expected":"已售罄",
-        "roi":"友情商店记忆碎片",
-        "roi_offset":[
-            -110,0,50,160
+    "记忆碎片已售罄": {
+        "recognition": "OCR",
+        "expected": "已售罄",
+        "roi": "友情商店记忆碎片",
+        "roi_offset": [
+            -110,
+            0,
+            50,
+            160
         ]
     },
-    "友情商店狂乱精粹":{
-        "recognition":"OCR",
-        "expected":["狂乱精粹"],
-        "next":[
+    "友情商店狂乱精粹": {
+        "recognition": "OCR",
+        "expected": [
+            "狂乱精粹"
+        ],
+        "next": [
             "狂乱精粹已售罄",
-            "购买狂乱精粹"            
+            "购买狂乱精粹"
         ]
-
     },
-    "购买狂乱精粹":{
-        "action":"Click",
-        "target":"友情商店狂乱精粹",
-        "target_offset":[
-            -110,0,180,160
+    "购买狂乱精粹": {
+        "action": "Click",
+        "target": "友情商店狂乱精粹",
+        "target_offset": [
+            -110,
+            0,
+            180,
+            160
         ],
-        "next":[
+        "next": [
             "ReSlideButton"
         ]
     },
-    "狂乱精粹已售罄":{
-        "recognition":"OCR",
-        "expected":"已售罄",
-        "roi":"友情商店狂乱精粹",
-        "roi_offset":[
-            -110,0,50,160
+    "狂乱精粹已售罄": {
+        "recognition": "OCR",
+        "expected": "已售罄",
+        "roi": "友情商店狂乱精粹",
+        "roi_offset": [
+            -110,
+            0,
+            50,
+            160
         ]
     },
-    "友情商店狄斯币":{
-        "recognition":"OCR",
-        "expected":["狄斯币"],
-        "next":[
+    "友情商店狄斯币": {
+        "recognition": "OCR",
+        "expected": [
+            "狄斯币"
+        ],
+        "next": [
             "狄斯币已售罄",
             "购买狄斯币"
         ]
-
     },
-    "购买狄斯币":{
-        "action":"Click",
-        "target":"友情商店狄斯币",
-        "target_offset":[
-            -180,0,50,160
+    "购买狄斯币": {
+        "action": "Click",
+        "target": "友情商店狄斯币",
+        "target_offset": [
+            -180,
+            0,
+            50,
+            160
         ],
-        "next":[
+        "next": [
             "ReSlideButton"
-            
         ]
     },
-    "狄斯币已售罄":{
-        "recognition":"OCR",
-        "expected":"已售罄",
-        "roi":"友情商店狄斯币",
-        "roi_offset":[
-            -110,0,50,160
+    "狄斯币已售罄": {
+        "recognition": "OCR",
+        "expected": "已售罄",
+        "roi": "友情商店狄斯币",
+        "roi_offset": [
+            -110,
+            0,
+            50,
+            160
         ]
     },
-    "拉满了购买":{
-        "recognition":"TemplateMatch",
-        "template":["Shop/AllinShop.png"],
-        "next":[
+    "拉满了购买": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Shop/AllinShop.png"
+        ],
+        "next": [
             "已拉满"
         ]
-
     },
-    "已拉满":{
-        "recognition": "ColorMatch", 
-        "roi": "拉满了购买", 
-        "method": 4, 
-        "lower": [76, 76, 89], "upper": [76, 76, 89], "count": 1100, 
+    "已拉满": {
+        "recognition": "ColorMatch",
+        "roi": "拉满了购买",
+        "method": 4,
+        "lower": [
+            76,
+            76,
+            89
+        ],
+        "upper": [
+            76,
+            76,
+            89
+        ],
+        "count": 1100,
         "connected": false,
-        "next":["ClickBuy"]
-
+        "next": [
+            "ClickBuy"
+        ]
     },
-    "ReSlideButton":{
-        "recognition":"TemplateMatch",
-        "template":"Shop/SlideButton.png",
-        "roi":[666,400,451,122],
-        "next":[
+    "ReSlideButton": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/SlideButton.png",
+        "roi": [
+            666,
+            400,
+            451,
+            122
+        ],
+        "next": [
             "SlideButton"
         ]
     },
-    "SlideButton":{
-        "action":"Swipe",
-        "begin":"ReSlideButton",
-        "end":[1000,417,158,112],
-        "next":[
+    "SlideButton": {
+        "action": "Swipe",
+        "begin": "ReSlideButton",
+        "end": [
+            1000,
+            417,
+            158,
+            112
+        ],
+        "next": [
             "ClickBuy"
         ]
     }
