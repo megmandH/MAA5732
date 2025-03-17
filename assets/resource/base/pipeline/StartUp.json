@@ -57,7 +57,7 @@
         "target": [
             1096,
             136,
-            184,
+            284,
             584
         ],
         "next": [
@@ -230,6 +230,26 @@
             246,
             90,
             400
+        ]
+    },
+    "EmotionDetectionAccumulateAward_color": {
+        "recognition": "ColorMatch",
+        "roi": [
+            748,
+            640,
+            12,
+            8
+        ],
+        "method": 4,
+        "lower": [
+            10,
+            11,
+            14
+        ],
+        "upper": [
+            255,
+            255,
+            255
         ]
     },
     "EmotionDetectionAccumulateAward": {
@@ -441,6 +461,12 @@
     },
     "CloseTidesofAsh": {
         "recognition": "OCR",
+        "roi": [
+            282,
+            145,
+            716,
+            438
+        ],
         "expected": [
             "灰烬之潮",
             "灰烬使徒",

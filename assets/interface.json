@@ -39,22 +39,11 @@
       ]
     },
     {
-      "name": "商店购买",
-      "entry": "进入采购办",
-      "option": [
-        "友情点购买"
-      ]
-    },
-    {
       "name": "领取监察密令",
       "entry": "领取监察密令",
       "option": [
         "监察嘉奖选择"
       ]
-    },
-    {
-      "name": "debug用",
-      "entry": "ReSlideButton"
     }
   ],
   "option": {

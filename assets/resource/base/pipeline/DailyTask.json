@@ -24,7 +24,7 @@
             "AstRegulator",
             "AstSecretSociety",
             "AstStormy",
-            "AstMails"
+            "AstFriendShop"
         ]
     },
     "AssistTaskFlag": {
@@ -148,6 +148,29 @@
             "HomeFlag/HomeFlag3.png"
         ]
     },
+    "HomeFlag_color": {
+        "recognition": "ColorMatch",
+        "roi": [
+            1154,
+            31,
+            12,
+            13
+        ],
+        "method": 4,
+        "lower": [
+            1,
+            3,
+            6
+        ],
+        "upper": [
+            255,
+            255,
+            255
+        ],
+        "next": [
+            "HomeFlag"
+        ]
+    },
     "Mails": {
         "recognition": "OCR",
         "expected": [
@@ -176,7 +199,8 @@
         "next": [
             "ThingsGet_forMails",
             "HandleMails"
-        ]
+        ],
+        "post_delay": 1000
     },
     "ThingsGet_forMails": {
         "recognition": "OCR",
@@ -188,7 +212,6 @@
             150,
             181
         ],
-        "pre_delay": 500,
         "next": [
             "HomeButton",
             "Back"

@@ -141,7 +141,7 @@
     },
     "AstFriendShop": {
         "recognition": "OCR",
-        "expected": "可通过友情点兑换",
+        "expected": "有道具可通过友情点兑换",
         "action": "Click",
         "post_delay": 500,
         "next": [
@@ -207,7 +207,7 @@
             47
         ],
         "next": [
-            "已售罄_color"
+            "已售罄"
         ],
         "interrupt": [
             "友情商店购买"
@@ -215,12 +215,12 @@
     },
     "已售罄": {
         "recognition": "OCR",
-        "expected": "已售罄",
+        "expected": "已售",
         "roi": [
-            449,
-            487,
-            66,
-            23
+            430,
+            457,
+            100,
+            100
         ],
         "next": [
             "HomeButton",
@@ -230,10 +230,10 @@
     "已售罄_color": {
         "recognition": "ColorMatch",
         "roi": [
-            997,
-            448,
-            117,
-            66
+            449,
+            487,
+            66,
+            23
         ],
         "method": 4,
         "lower": [
