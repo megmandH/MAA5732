@@ -4,8 +4,16 @@
   "url": "https://github.com/megmandH/MAA5732",
   "controller": [
     {
-      "name": "ADB 默认方式",
+      "name": "安卓端",
       "type": "Adb"
+    },
+    {
+      "name": "桌面端",
+      "type": "Win32",
+      "win32": {
+        "class_regex": ".*",
+        "window_regex": "Visual Studio"
+      }
     }
   ],
   "resource": [
@@ -21,6 +29,12 @@
       ]
     }
   ],
+  "agent": {
+    "child_exec": "python",
+    "child_args": [
+      "{PROJECT_DIR}/agent/main.py"
+    ]
+  },
   "task": [
     {
       "name": "启动游戏",
