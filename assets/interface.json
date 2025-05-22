@@ -1,7 +1,13 @@
 {
   "name": "MAA5732",
-  "version": "v1.0.0",
-  "url": "",
+  "version": "v1.2.3",
+  "url": "https://github.com/megmandH/MAA5732",
+  "controller": [
+    {
+      "name": "ADB 默认方式",
+      "type": "Adb"
+    }
+  ],
   "resource": [
     {
       "name": "官服",
@@ -45,12 +51,6 @@
     {
       "name": "领取监察密令",
       "entry": "领取监察密令",
-      "check": false,
-      "repeatable": false
-    },
-    {
-      "name": "debug用",
-      "entry": "购买狂乱精粹",
       "check": false,
       "repeatable": false
     }
@@ -160,10 +160,6 @@
         }
       ]
     },
-    "周一周三周五周日": {},
-    "坚韧 诡秘 异能": {},
-    "周二周四周六周日": {},
-    "狂暴 精准 启迪": {},
     "友情点购买": {
       "cases": [
         {
