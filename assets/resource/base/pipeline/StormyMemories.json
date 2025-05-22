@@ -4,18 +4,36 @@
         "expected": "有记忆风暴次数可用",
         "action": "Click",
         "next": [
-            "Mission5"
-        ],
-        "post_delay": 2000
+            "MissionFlag"
+        ]
     },
-    "Mission5": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/Mission5.png",
+    "StormyFlag": {
+        "recognition": "OCR",
+        "expected": "副本掉落",
+        "roi": [
+            1129,
+            215,
+            110,
+            37
+        ],
+        "next": [
+            "StormyMission",
+            "StormyFlag"
+        ]
+    },
+    "StormyMission": {
         "action": "Click",
+        "target": [
+            1007,
+            559,
+            162,
+            97
+        ],
         "post_wait_freezes": 500,
         "next": [
             "MopUp",
-            "Mission5"
+            "StormyFlag",
+            "StormyMission"
         ]
     }
 }

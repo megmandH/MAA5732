@@ -1,21 +1,7 @@
 {
   "name": "MAA5732",
   "version": "v1.0.0",
-  "url": "https://github.com/megmandH/MAA5732",
-  "controller": [
-    {
-      "name": "安卓端",
-      "type": "Adb"
-    },
-    {
-      "name": "桌面端",
-      "type": "Win32",
-      "win32": {
-        "class_regex": ".*",
-        "window_regex": "Visual Studio"
-      }
-    }
-  ],
+  "url": "",
   "resource": [
     {
       "name": "官服",
@@ -29,66 +15,85 @@
       ]
     }
   ],
-  "agent": {
-    "child_exec": "python",
-    "child_args": [
-      "{PROJECT_DIR}/agent/main.py"
-    ]
-  },
   "task": [
     {
       "name": "启动游戏",
-      "entry": "Start5732"
+      "entry": "Start5732",
+      "check": false,
+      "repeatable": false
     },
     {
       "name": "助手模式全任务",
-      "entry": "DailyWork"
+      "entry": "DailyWork",
+      "check": false,
+      "repeatable": false
     },
     {
       "name": "清空体力",
       "entry": "AllBrush",
       "option": [
-        "选择关卡",
-        "周一周三周五周日"
+        "选择关卡"
+      ]
+    },
+    {
+      "name": "商店购买",
+      "entry": "进入采购办",
+      "option": [
+        "友情点购买"
       ]
     },
     {
       "name": "领取监察密令",
       "entry": "领取监察密令",
-      "option": [
-        "监察嘉奖选择"
-      ]
+      "check": false,
+      "repeatable": false
+    },
+    {
+      "name": "debug用",
+      "entry": "购买狂乱精粹",
+      "check": false,
+      "repeatable": false
     }
   ],
   "option": {
     "选择关卡": {
       "cases": [
         {
-          "name": "狄斯币G-04",
+          "name": "狄斯币G-05",
           "pipeline_override": {
             "AllBrush": {
               "next": [
-                "狄斯币G-04"
+                "狄斯币G-05"
               ]
             }
           }
         },
         {
-          "name": "恶兆之种C-04",
+          "name": "恶兆之种C-05",
           "pipeline_override": {
             "AllBrush": {
               "next": [
-                "恶兆之种C-04"
+                "恶兆之种C-05"
               ]
             }
           }
         },
         {
-          "name": "技能本P-04",
+          "name": "技能本P-05",
           "pipeline_override": {
             "AllBrush": {
               "next": [
-                "技能本P-04"
+                "技能本P-05"
+              ]
+            }
+          }
+        },
+        {
+          "name": "重构碎片S-03",
+          "pipeline_override": {
+            "AllBrush": {
+              "next": [
+                "重构碎片S-03"
               ]
             }
           }
@@ -155,30 +160,18 @@
         }
       ]
     },
-    "监察嘉奖选择": {
+    "周一周三周五周日": {},
+    "坚韧 诡秘 异能": {},
+    "周二周四周六周日": {},
+    "狂暴 精准 启迪": {},
+    "友情点购买": {
       "cases": [
         {
-          "name": "体力",
+          "name": "友情点购买每日限购",
           "pipeline_override": {
-            "监察嘉奖二选一": {
-              "roi": [
-                365,
-                470,
-                224,
-                76
-              ]
-            }
-          }
-        },
-        {
-          "name": "监察徽印",
-          "pipeline_override": {
-            "监察嘉奖二选一": {
-              "roi": [
-                700,
-                471,
-                225,
-                83
+            "进入采购办": {
+              "next": [
+                "友情点购买"
               ]
             }
           }
