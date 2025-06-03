@@ -1,178 +1,205 @@
 {
-  "name": "MAA5732",
-  "version": "v1.2.3",
-  "url": "https://github.com/megmandH/MAA5732",
-  "controller": [
-    {
-      "name": "ADB 默认方式",
-      "type": "Adb"
-    }
-  ],
-  "resource": [
-    {
-      "name": "官服",
-      "path": "{PROJECT_DIR}/resource/base"
-    },
-    {
-      "name": "B 服",
-      "path": [
-        "{PROJECT_DIR}/resource/base",
-        "{PROJECT_DIR}/resource/bilibili"
-      ]
-    }
-  ],
-  "task": [
-    {
-      "name": "启动游戏",
-      "entry": "Start5732",
-      "check": false,
-      "repeatable": false
-    },
-    {
-      "name": "助手模式全任务",
-      "entry": "DailyWork",
-      "check": false,
-      "repeatable": false
-    },
-    {
-      "name": "清空体力",
-      "entry": "AllBrush",
-      "option": [
-        "选择关卡"
-      ]
-    },
-    {
-      "name": "商店购买",
-      "entry": "进入采购办",
-      "option": [
-        "友情点购买"
-      ]
-    },
-    {
-      "name": "领取监察密令",
-      "entry": "领取监察密令",
-      "check": false,
-      "repeatable": false
-    }
-  ],
-  "option": {
-    "选择关卡": {
-      "cases": [
+    "name": "MAA5732",
+    "version": "v1.2.3",
+    "url": "https://github.com/megmandH/MAA5732",
+    "controller": [
         {
-          "name": "狄斯币G-05",
-          "pipeline_override": {
-            "AllBrush": {
-              "next": [
-                "狄斯币G-05"
-              ]
-            }
-          }
-        },
-        {
-          "name": "恶兆之种C-05",
-          "pipeline_override": {
-            "AllBrush": {
-              "next": [
-                "恶兆之种C-05"
-              ]
-            }
-          }
-        },
-        {
-          "name": "技能本P-05",
-          "pipeline_override": {
-            "AllBrush": {
-              "next": [
-                "技能本P-05"
-              ]
-            }
-          }
-        },
-        {
-          "name": "重构碎片S-03",
-          "pipeline_override": {
-            "AllBrush": {
-              "next": [
-                "重构碎片S-03"
-              ]
-            }
-          }
-        },
-        {
-          "name": "狂暴源素L-F4",
-          "pipeline_override": {
-            "AllBrush": {
-              "next": [
-                "狂暴源素L-F4"
-              ]
-            }
-          }
-        },
-        {
-          "name": "精准源素L-R4",
-          "pipeline_override": {
-            "AllBrush": {
-              "next": [
-                "精准源素L-R4"
-              ]
-            }
-          }
-        },
-        {
-          "name": "启迪源素L-C4",
-          "pipeline_override": {
-            "AllBrush": {
-              "next": [
-                "启迪源素L-C4"
-              ]
-            }
-          }
-        },
-        {
-          "name": "坚韧源素L-E4",
-          "pipeline_override": {
-            "AllBrush": {
-              "next": [
-                "坚韧源素L-E4"
-              ]
-            }
-          }
-        },
-        {
-          "name": "诡秘源素L-U4",
-          "pipeline_override": {
-            "AllBrush": {
-              "next": [
-                "诡秘源素L-U4"
-              ]
-            }
-          }
-        },
-        {
-          "name": "异能源素L-A4",
-          "pipeline_override": {
-            "AllBrush": {
-              "next": [
-                "异能源素L-A4"
-              ]
-            }
-          }
+            "name": "ADB 默认方式",
+            "type": "Adb"
         }
-      ]
-    },
-    "友情点购买": {
-      "cases": [
+    ],
+    "resource": [
         {
-          "name": "友情点购买每日限购",
-          "pipeline_override": {
-            "进入采购办": {
-              "next": [
+            "name": "官服",
+            "path": "{PROJECT_DIR}/resource/base"
+        },
+        {
+            "name": "B 服",
+            "path": [
+                "{PROJECT_DIR}/resource/base",
+                "{PROJECT_DIR}/resource/bilibili"
+            ]
+        }
+    ],
+    "task": [
+        {
+            "name": "启动游戏",
+            "entry": "Start5732"
+        },
+        {
+            "name": "助手模式全任务",
+            "entry": "DailyWork"
+        },
+        {
+            "name": "清空体力",
+            "entry": "AllBrush",
+            "option": [
+                "选择关卡"
+            ]
+        },
+        {
+            "name": "商店购买",
+            "entry": "进入采购办",
+            "option": [
                 "友情点购买"
-              ]
-            }
-          }
+            ]
+        },
+        {
+            "name": "领取监察密令",
+            "entry": "领取监察密令",
+            "option": [
+                "监察嘉奖选择"
+            ]
         }
-      ]
+    ],
+    "option": {
+        "选择关卡": {
+            "cases": [
+                {
+                    "name": "狄斯币G-05",
+                    "pipeline_override": {
+                        "AllBrush": {
+                            "next": [
+                                "狄斯币G-05"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "恶兆之种C-05",
+                    "pipeline_override": {
+                        "AllBrush": {
+                            "next": [
+                                "恶兆之种C-05"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "技能本P-05",
+                    "pipeline_override": {
+                        "AllBrush": {
+                            "next": [
+                                "技能本P-05"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "重构碎片S-03",
+                    "pipeline_override": {
+                        "AllBrush": {
+                            "next": [
+                                "重构碎片S-03"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "狂暴源素L-F4",
+                    "pipeline_override": {
+                        "AllBrush": {
+                            "next": [
+                                "狂暴源素L-F4"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "精准源素L-R4",
+                    "pipeline_override": {
+                        "AllBrush": {
+                            "next": [
+                                "精准源素L-R4"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "启迪源素L-C4",
+                    "pipeline_override": {
+                        "AllBrush": {
+                            "next": [
+                                "启迪源素L-C4"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "坚韧源素L-E4",
+                    "pipeline_override": {
+                        "AllBrush": {
+                            "next": [
+                                "坚韧源素L-E4"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "诡秘源素L-U4",
+                    "pipeline_override": {
+                        "AllBrush": {
+                            "next": [
+                                "诡秘源素L-U4"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "异能源素L-A4",
+                    "pipeline_override": {
+                        "AllBrush": {
+                            "next": [
+                                "异能源素L-A4"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "友情点购买": {
+            "cases": [
+                {
+                    "name": "友情点购买每日限购",
+                    "pipeline_override": {
+                        "进入采购办": {
+                            "next": [
+                                "友情点购买"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "监察嘉奖选择": {
+            "cases": [
+                {
+                    "name": "体力",
+                    "pipeline_override": {
+                        "监察嘉奖二选一": {
+                            "roi": [
+                                365,
+                                470,
+                                224,
+                                76
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "监察徽印",
+                    "pipeline_override": {
+                        "监察嘉奖二选一": {
+                            "roi": [
+                                700,
+                                471,
+                                225,
+                                83
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
     }
-  }
 }

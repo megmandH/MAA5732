@@ -3,78 +3,52 @@
         "next": [
             "Home",
             "EnterMBCC",
-            "Announcement",
-            "PackageCheck",
-            "ZiYiLogo",
-            "5732Logo"
+            "Announcement"
         ],
         "interrupt": [
+            "5732Logo",
+            "ZiYiLogo",
+            "Downloading",
+            "PackageCheck",
             "Entering",
-            "ClosePopup",
-            "BlackKeyVIP",
-            "EmotionDetection",
             "NetLoading",
+            "NetworkError",
+            "ClosePopup",
+            "CloseBlackKeyVIP",
+            "BlackKeyVIP",
             "StartApp"
         ]
     },
     "Home": {
+        "doc": "在各种广告弹窗前识别到home",
         "recognition": "OCR",
         "expected": [
             "采购办",
-            "禁闭者",
-            "夜莺助手"
+            "狄斯城",
+            "监察密令",
+            "活动大厅"
         ],
         "next": [
-            "EmotionDetection"
+            "HomeFlag"
         ],
         "interrupt": [
+            "EmotionDetection",
             "ClosePopup",
             "BlackKeyVIP",
+            "CloseBlackKeyVIP",
+            "CloseTidesofAsh",
             "NetLoading"
-        ],
-        "on_error": [
-            "IsEmotion"
-        ],
-        "timeout": 10000
+        ]
     },
     "5732Logo": {
         "recognition": "TemplateMatch",
         "template": "StartUp/5732Logo.png",
-        "next": [
-            "EnterMBCC",
-            "ZiYiLogo",
-            "PackageCheck",
-            "Announcement"
-        ]
+        "post_wait_freezes": 4000
     },
     "ZiYiLogo": {
         "recognition": "TemplateMatch",
         "template": "StartUp/ZiYiLogo.png",
-        "next": [
-            "PackageCheck",
-            "EnterMBCC",
-            "Announcement"
-        ],
-        "interrupt": [
-            "Downloading"
-        ]
-    },
-    "PackageCheck": {
-        "recognition": "OCR",
-        "expected": "安装包检查中",
-        "next": [
-            "EnterMBCC",
-            "Announcement"
-        ]
-    },
-    "NetLoading": {
-        "recognition": "OCR",
-        "expected": "意识恢复中",
-        "post_delay": 2000
-    },
-    "Entering": {
-        "recognition": "TemplateMatch",
-        "template": "StartUp/Entering.png"
+        "post_wait_freezes": 4000
     },
     "Announcement": {
         "recognition": "OCR",
@@ -83,46 +57,76 @@
         "target": [
             1096,
             136,
-            184,
+            284,
             584
         ],
         "next": [
-            "EnterMBCC"
+            "Home",
+            "EnterMBCC",
+            "Announcement"
+        ],
+        "interrupt": [
+            "Entering",
+            "NetLoading",
+            "NetworkError",
+            "ClosePopup",
+            "CloseBlackKeyVIP",
+            "BlackKeyVIP"
         ]
+    },
+    "PackageCheck": {
+        "recognition": "OCR",
+        "expected": [
+            "安装包检查中",
+            "包检查中"
+        ],
+        "post_wait_freezes": 1000
+    },
+    "NetLoading": {
+        "recognition": "OCR",
+        "expected": "意识恢复中",
+        "post_wait_freezes": 2000
+    },
+    "Entering": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/Entering.png",
+        "post_wait_freezes": 1000
     },
     "StartApp": {
         "action": "StartApp",
-        "package": "com.zy.wqmt.cn/com.papegames.gamelib_unity.BaseUnityImplActivity",
-        "post_delay": 4000
+        "package": "com.zy.wqmt.cn",
+        "post_delay": 3500
     },
     "EnterMBCC": {
+        "doc": "登录界面点击进入管理局",
         "recognition": "OCR",
         "expected": [
             "进入管理局",
-            "管理局"
+            "进入管理",
+            "入管理局"
         ],
         "action": "Click",
         "next": [
-            "Home",
-            "EmotionDetection"
+            "Home"
         ],
         "interrupt": [
+            "Entering",
+            "NetLoading",
+            "NetworkError",
             "ClosePopup",
-            "BlackKeyVIP",
-            "Announcement",
-            "Entering"
+            "BlackKeyVIP"
         ]
     },
     "Downloading": {
         "recognition": "OCR",
         "expected": "资源包下载中",
         "roi": [
-            544,
-            676,
-            220,
-            22
+            499,
+            660,
+            303,
+            49
         ],
-        "post_delay": 2000
+        "post_wait_freezes": 2000
     },
     "ClosePopup": {
         "recognition": "OCR",
@@ -153,44 +157,223 @@
     },
     "EmotionDetection": {
         "recognition": "OCR",
-        "expected": "情绪检测",
-        "next": [
-            "EmotionDetectionFinish",
-            "EmotionDetectionSelect"
-        ],
-        "interrupt": [
-            "ClosePopup",
-            "BlackKeyVIP"
-        ]
-    },
-    "EmotionDetectionSelect": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            658,
-            332,
-            334,
-            24
+        "expected": [
+            "系统工作中",
+            "开始检测",
+            "月情绪检测",
+            "累计奖励"
         ],
         "next": [
             "EmotionDetectionFinish"
+        ],
+        "interrupt": [
+            "EmotionDetectionSelect",
+            "ClosePopup",
+            "BlackKeyVIP",
+            "EmotionDirectSelect"
         ]
+    },
+    "EmotionDetectionSelect": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "StartUp/ChiefLogoforEmotionDetection.png"
+        ],
+        "action": "Click",
+        "target_offset": [
+            -365,
+            70,
+            340,
+            100
+        ],
+        "post_wait_freezes": 1000
+    },
+    "EmotionDirectSelect": {
+        "action": "Click",
+        "target": [
+            630,
+            374,
+            365,
+            134
+        ],
+        "pre_wait_freezes": 500,
+        "post_wait_freezes": 1000
     },
     "EmotionDetectionFinish": {
         "recognition": "OCR",
-        "expected": "检测完成",
-        "roi": [
-            600,
-            320,
-            220,
-            70
+        "expected": [
+            "结算检测",
+            "检测完成",
+            "获得奖励物资"
         ],
+        "target": [
+            1096,
+            246,
+            90,
+            400
+        ],
+        "next": [
+            "EmotionDetectionRetest",
+            "EmotionDetectionAccumulateAward"
+        ]
+    },
+    "EmotionDetectionRetest": {
+        "recognition": "OCR",
+        "expected": "前往补测",
+        "action": "Click",
+        "next": "EmotionDetection"
+    },
+    "CloseEmotionDetection": {
         "action": "Click",
         "target": [
             1096,
             246,
             90,
             400
+        ]
+    },
+    "EmotionDetectionAccumulateAward_color": {
+        "recognition": "ColorMatch",
+        "roi": [
+            748,
+            640,
+            12,
+            8
+        ],
+        "method": 4,
+        "lower": [
+            10,
+            11,
+            14
+        ],
+        "upper": [
+            255,
+            255,
+            255
+        ]
+    },
+    "EmotionDetectionAccumulateAward": {
+        "recognition": "OCR",
+        "expected": [
+            "累计奖励"
+        ],
+        "next": [
+            "EmotionDetection2DayAward",
+            "EmotionDetection8DayAward",
+            "EmotionDetection15DayAward",
+            "EmotionDetection25DayAward",
+            "CloseEmotionDetection"
+        ]
+    },
+    "EmotionDetection2DayAward": {
+        "recognition": "OCR",
+        "expected": [
+            "2",
+            "8",
+            "15",
+            "25"
+        ],
+        "roi": "EmotionDetectionAccumulateAward",
+        "roi_offset": [
+            -34,
+            -51,
+            -18,
+            28
+        ],
+        "index": 0,
+        "action": "Click",
+        "target": "EmotionDetectionAccumulateAward",
+        "target_offset": [
+            223,
+            -52,
+            -14,
+            42
+        ],
+        "next": [
+            "CloseEmotionDetection"
+        ]
+    },
+    "EmotionDetection8DayAward": {
+        "recognition": "OCR",
+        "expected": [
+            "2",
+            "8",
+            "15",
+            "25"
+        ],
+        "roi": "EmotionDetectionAccumulateAward",
+        "roi_offset": [
+            -34,
+            -51,
+            -18,
+            28
+        ],
+        "index": 1,
+        "action": "Click",
+        "target": "EmotionDetectionAccumulateAward",
+        "target_offset": [
+            370,
+            -52,
+            -14,
+            42
+        ],
+        "next": [
+            "CloseEmotionDetection"
+        ]
+    },
+    "EmotionDetection15DayAward": {
+        "recognition": "OCR",
+        "expected": [
+            "2",
+            "8",
+            "15",
+            "25"
+        ],
+        "roi": "EmotionDetectionAccumulateAward",
+        "roi_offset": [
+            -34,
+            -51,
+            -18,
+            28
+        ],
+        "index": 2,
+        "action": "Click",
+        "target": "EmotionDetectionAccumulateAward",
+        "target_offset": [
+            -34,
+            -51,
+            -18,
+            28
+        ],
+        "next": [
+            "CloseEmotionDetection"
+        ]
+    },
+    "EmotionDetection25DayAward": {
+        "recognition": "OCR",
+        "expected": [
+            "2",
+            "8",
+            "15",
+            "25"
+        ],
+        "roi": "EmotionDetectionAccumulateAward",
+        "roi_offset": [
+            -34,
+            -51,
+            -18,
+            28
+        ],
+        "index": 3,
+        "action": "Click",
+        "target": "EmotionDetectionAccumulateAward",
+        "target_offset": [
+            664,
+            -52,
+            -14,
+            42
+        ],
+        "next": [
+            "CloseEmotionDetection"
         ]
     },
     "IsEmotion": {
@@ -204,14 +387,16 @@
     },
     "NeedEmotionDetection": {
         "recognition": "TemplateMatch",
-        "template": "TaskBasics/needTask.png",
-        "roi": [
-            1033,
-            90,
-            51,
-            39
+        "template": "StartUp/needTask.png",
+        "roi": "IsEmotion",
+        "roi_offset": [
+            94,
+            -14,
+            -7,
+            7
         ],
         "post_delay": 3000,
+        "threshold": 0.6,
         "next": [
             "EmotionDetection"
         ],
@@ -225,13 +410,15 @@
         "recognition": "TemplateMatch",
         "template": "TaskBasics/needTask.png",
         "inverse": true,
-        "roi": [
-            1033,
-            90,
-            51,
-            39
+        "roi": "IsEmotion",
+        "roi_offset": [
+            94,
+            -14,
+            -7,
+            7
         ],
         "post_delay": 3000,
+        "threshold": 0.6,
         "next": [
             "HomeFlag"
         ],
@@ -253,6 +440,108 @@
             0,
             0,
             0
-        ]
+        ],
+        "next": [
+            "ThingsGet",
+            "CloseBlackKeyVIP"
+        ],
+        "post_wait_freezes": 2000
+    },
+    "CloseBlackKeyVIP": {
+        "recognition": "OCR",
+        "expected": [
+            "您的月卡还有2天到期",
+            "是否立即前往续费"
+        ],
+        "next": [
+            "ClickCancel"
+        ],
+        "post_wait_freezes": 2000
+    },
+    "CloseTidesofAsh": {
+        "recognition": "OCR",
+        "roi": [
+            282,
+            145,
+            716,
+            438
+        ],
+        "expected": [
+            "灰烬之潮",
+            "灰烬使徒",
+            "侵袭"
+        ],
+        "next": [
+            "ClickOK"
+        ],
+        "post_delay": 1000
+    },
+    "NetworkError": {
+        "recognition": "OCR",
+        "expected": [
+            "发生未知错误",
+            "请稍后再试",
+            "与服务器失去连接",
+            "请重新登录"
+        ],
+        "roi": [
+            282,
+            145,
+            716,
+            438
+        ],
+        "next": [
+            "ClickOK"
+        ],
+        "post_delay": 2000
+    },
+    "UpdatingError": {
+        "recognition": "OCR",
+        "expected": [
+            "获取更新服务器地址失败"
+        ],
+        "roi": [
+            282,
+            145,
+            716,
+            438
+        ],
+        "next": [
+            "ClickOut"
+        ],
+        "post_delay": 2000
+    },
+    "ClickOK": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            282,
+            145,
+            716,
+            438
+        ],
+        "action": "Click"
+    },
+    "ClickCancel": {
+        "recognition": "OCR",
+        "expected": "取消",
+        "roi": [
+            282,
+            145,
+            716,
+            438
+        ],
+        "action": "Click"
+    },
+    "ClickOut": {
+        "recognition": "OCR",
+        "expected": "退出",
+        "roi": [
+            282,
+            145,
+            716,
+            438
+        ],
+        "action": "Click"
     }
 }

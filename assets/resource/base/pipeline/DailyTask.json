@@ -24,6 +24,7 @@
             "AstRegulator",
             "AstSecretSociety",
             "AstStormy",
+            "AstFriendShop",
             "Mails"
         ]
     },
@@ -49,10 +50,24 @@
     },
     "ClickFunctionMode": {
         "recognition": "OCR",
-        "expected": "功能模式",
+        "expected": "危机管理",
         "action": "Click"
     },
-    "MissionFlag": {
+    "Mission3Flag": {
+        "recognition": "OCR",
+        "expected": "副本掉落",
+        "roi": [
+            1119,
+            218,
+            126,
+            36
+        ],
+        "next": [
+            "Mission3",
+            "Mission3Flag"
+        ]
+    },
+    "Mission4Flag": {
         "recognition": "OCR",
         "expected": "副本掉落",
         "roi": [
@@ -63,7 +78,7 @@
         ],
         "next": [
             "Mission4",
-            "MissionFlag"
+            "Mission4Flag"
         ]
     },
     "Mission4": {
@@ -77,7 +92,7 @@
         "post_wait_freezes": 500,
         "next": [
             "MopUp",
-            "MissionFlag",
+            "Mission4Flag",
             "Mission4"
         ]
     },

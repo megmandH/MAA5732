@@ -21,10 +21,10 @@
             "狄斯"
         ],
         "roi": [
-            616,
-            124,
-            651,
-            205
+            1118,
+            125,
+            117,
+            97
         ],
         "action": "Click"
     },
@@ -33,13 +33,26 @@
         "template": "Combat/XiuRiver.png",
         "action": "Click"
     },
+    "XiuRiver_text": {
+        "recognition": "OCR",
+        "expected": [
+            "锈河"
+        ],
+        "action": "Click",
+        "target_offset": [
+            -57,
+            0,
+            55,
+            2
+        ]
+    },
     "狄斯币G-05": {
         "next": [
             "淘金狂热"
         ],
         "interrupt": [
             "Dysmyth_text",
-            "XiuRiver",
+            "XiuRiver_text",
             "ClickFunctionMode"
         ]
     },
@@ -69,7 +82,7 @@
         ],
         "interrupt": [
             "Dysmyth_text",
-            "XiuRiver",
+            "XiuRiver_text",
             "ClickFunctionMode"
         ]
     },
@@ -101,7 +114,7 @@
             "进入狂暴源素副本首页",
             "帕尔马废墟",
             "Dysmyth_text",
-            "XiuRiver",
+            "XiuRiver_text",
             "ClickFunctionMode",
             "SlideUp",
             "SlideDown"
@@ -117,7 +130,7 @@
             244
         ],
         "next": [
-            "MissionFlag"
+            "Mission4Flag"
         ]
     },
     "进入狂暴源素副本首页": {
@@ -139,7 +152,7 @@
             "进入精准源素副本首页",
             "帕尔马废墟",
             "Dysmyth_text",
-            "XiuRiver",
+            "XiuRiver_text",
             "ClickFunctionMode",
             "SlideUp",
             "SlideDown"
@@ -155,7 +168,7 @@
             244
         ],
         "next": [
-            "MissionFlag"
+            "Mission4Flag"
         ]
     },
     "进入精准源素副本首页": {
@@ -177,7 +190,7 @@
             "进入启迪源素副本首页",
             "帕尔马废墟",
             "Dysmyth_text",
-            "XiuRiver",
+            "XiuRiver_text",
             "ClickFunctionMode",
             "SlideUp",
             "SlideDown"
@@ -193,7 +206,7 @@
             244
         ],
         "next": [
-            "MissionFlag"
+            "Mission4Flag"
         ]
     },
     "进入启迪源素副本首页": {
@@ -215,7 +228,7 @@
             "进入坚韧源素副本首页",
             "帕尔马废墟",
             "Dysmyth_text",
-            "XiuRiver",
+            "XiuRiver_text",
             "ClickFunctionMode",
             "SlideUp",
             "SlideDown"
@@ -231,7 +244,7 @@
             244
         ],
         "next": [
-            "MissionFlag"
+            "Mission4Flag"
         ]
     },
     "进入坚韧源素副本首页": {
@@ -253,7 +266,7 @@
             "进入诡秘源素副本首页",
             "帕尔马废墟",
             "Dysmyth_text",
-            "XiuRiver",
+            "XiuRiver_text",
             "ClickFunctionMode",
             "SlideUp",
             "SlideDown"
@@ -269,7 +282,7 @@
             244
         ],
         "next": [
-            "MissionFlag"
+            "Mission4Flag"
         ]
     },
     "进入诡秘源素副本首页": {
@@ -291,7 +304,7 @@
             "进入异能源素副本首页",
             "帕尔马废墟",
             "Dysmyth_text",
-            "XiuRiver",
+            "XiuRiver_text",
             "ClickFunctionMode",
             "SlideUp",
             "SlideDown"
@@ -307,7 +320,7 @@
             244
         ],
         "next": [
-            "MissionFlag"
+            "Mission4Flag"
         ]
     },
     "进入异能源素副本首页": {
@@ -333,7 +346,7 @@
         "interrupt": [
             "SkillMaterials",
             "Dysmyth_text",
-            "XiuRiver",
+            "XiuRiver_text",
             "ClickFunctionMode"
         ]
     },
@@ -359,7 +372,7 @@
         "interrupt": [
             "极域搜寻",
             "Dysmyth_text",
-            "XiuRiver",
+            "XiuRiver_text",
             "ClickFunctionMode"
         ]
     },
@@ -384,7 +397,7 @@
         "post_wait_freezes": 500,
         "next": [
             "MopUp",
-            "MissionFlag",
+            "Mission3Flag",
             "Mission3"
         ]
     },
