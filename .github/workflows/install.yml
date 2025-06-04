@@ -54,8 +54,8 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        os: [win, osx, linux]
-        arch: [arm64, x64]
+        os: [win, macos, linux, android]
+        arch: [aarch64, x86_64]
       fail-fast: false
 
     steps:
@@ -72,20 +72,15 @@ jobs:
           out-file-path: "deps"
           extract: true
 
-      - name: Install 
-        shell: bash
-        run: |
-          python ./install.py ${{ needs.meta.outputs.tag }}
-
       - name: Download MFAAvalonia
         if: matrix.os != 'android'
         id: download_mfa
         uses: robinraju/release-downloader@v1
         with:
           repository: SweetSmellFox/MFAAvalonia
-          fileName: "MFAAvalonia-*-${{ matrix.os }}-${{ matrix.arch }}*"
+          fileName: "MFAAvalonia-*-${{ (matrix.os == 'win' && 'win') || (matrix.os == 'macos' && 'osx') || (matrix.os == 'linux' && 'linux') }}-${{ (matrix.arch == 'x86_64' && 'x64') || (matrix.arch == 'aarch64' && 'arm64') }}*"
           latest: true
-          out-file-path: "MFAAvalonia"
+          out-file-path: "MFA"
           extract: true
 
       - name: Clean up MFAAvalonia archive
@@ -96,12 +91,22 @@ jobs:
           rm -f "${ARCHIVE_FILE_PATH}"
           echo "Archive cleanup command executed for MFAAvalonia."
 
-      - name: Install MFAAvalonia
-        if: ${{ matrix.os != 'android' }}
+      - name: Install
         shell: bash
         run: |
-          rm -rf MFAAvalonia/resource/base/model
-          cp -r MFAAvalonia/* install
+          python ./install.py ${{ needs.meta.outputs.tag }}
+
+          if [[ "${{ matrix.os }}" != "android" ]]; then
+            if [ -d "MFA" ]; then
+              echo "Copying MFA files to install directory..."
+              mkdir -p install
+              rsync -av --ignore-existing MFA/ install/
+            else
+              echo "MFA directory not found, skipping copy."
+            fi
+          else
+            echo "Skipping copy MFA for Android."
+          fi
       
       - uses: actions/upload-artifact@v4
         with:
