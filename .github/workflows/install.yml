@@ -54,8 +54,8 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        os: [win, macos, linux, android]
-        arch: [aarch64, x86_64]
+        os: [win, osx, linux]
+        arch: [arm64, x64]
       fail-fast: false
 
     steps:
@@ -72,15 +72,20 @@ jobs:
           out-file-path: "deps"
           extract: true
 
+      - name: Install 
+        shell: bash
+        run: |
+          python ./install.py ${{ needs.meta.outputs.tag }}
+
       - name: Download MFAAvalonia
         if: matrix.os != 'android'
         id: download_mfa
         uses: robinraju/release-downloader@v1
         with:
           repository: SweetSmellFox/MFAAvalonia
-          fileName: "MFAAvalonia-*-${{ (matrix.os == 'win' && 'win') || (matrix.os == 'macos' && 'osx') || (matrix.os == 'linux' && 'linux') }}-${{ (matrix.arch == 'x86_64' && 'x64') || (matrix.arch == 'aarch64' && 'arm64') }}*"
+          fileName: "MFAAvalonia-*-${{ matrix.os }}-${{ matrix.arch }}*"
           latest: true
-          out-file-path: "MFA"
+          out-file-path: "MFAAvalonia"
           extract: true
 
       - name: Clean up MFAAvalonia archive
@@ -91,23 +96,13 @@ jobs:
           rm -f "${ARCHIVE_FILE_PATH}"
           echo "Archive cleanup command executed for MFAAvalonia."
 
-      - name: Install
+      - name: Install MFAAvalonia
+        if: ${{ matrix.os != 'android' }}
         shell: bash
         run: |
-          python ./install.py ${{ needs.meta.outputs.tag }}
-
-          if [[ "${{ matrix.os }}" != "android" ]]; then
-            if [ -d "MFA" ]; then
-              echo "Copying MFA files to install directory..."
-              mkdir -p install
-              rsync -av --ignore-existing MFA/ install/
-            else
-              echo "MFA directory not found, skipping copy."
-            fi
-          else
-            echo "Skipping copy MFA for Android."
-          fi
-
+          rm -rf MFAAvalonia/resource/base/model
+          cp -r MFAAvalonia/* install
+      
       - uses: actions/upload-artifact@v4
         with:
           name: MAA5732-${{ matrix.os }}-${{ matrix.arch }}
