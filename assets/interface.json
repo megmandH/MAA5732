@@ -1,6 +1,6 @@
 {
     "name": "MAA5732",
-    "version": "v1.2.3",
+    "version": "v1.2.6",
     "url": "https://github.com/megmandH/MAA5732",
     "controller": [
         {
@@ -21,6 +21,12 @@
             ]
         }
     ],
+    "agent": {
+        "child_exec": "python",
+        "child_args": [
+            "{PROJECT_DIR}/agent/main.py"
+        ]
+    },
     "task": [
         {
             "name": "启动游戏",
@@ -35,7 +41,8 @@
             "entry": "AllBrush",
             "option": [
                 "选择关卡"
-            ]
+            ],
+            "doc": "周一\n 周二.."
         },
         {
             "name": "商店购买",
