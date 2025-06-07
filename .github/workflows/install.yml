@@ -72,45 +72,30 @@ jobs:
           out-file-path: "deps"
           extract: true
 
-      - name: Download MFAAvalonia
-        if: matrix.os != 'android'
-        id: download_mfa
-        uses: robinraju/release-downloader@v1
-        with:
-          repository: SweetSmellFox/MFAAvalonia
-          fileName: "MFAAvalonia-*-${{ (matrix.os == 'win' && 'win') || (matrix.os == 'macos' && 'osx') || (matrix.os == 'linux' && 'linux') }}-${{ (matrix.arch == 'x86_64' && 'x64') || (matrix.arch == 'aarch64' && 'arm64') }}*"
-          latest: true
-          out-file-path: "MFA"
-          extract: true
-
-      - name: Clean up MFAAvalonia archive
-        if: matrix.os != 'android'
-        shell: bash
-        run: |
-          ARCHIVE_FILE_PATH="${{ fromJson(steps.download_mfa.outputs.downloaded_files)[0] }}"
-          rm -f "${ARCHIVE_FILE_PATH}"
-          echo "Archive cleanup command executed for MFAAvalonia."
-
       - name: Install
         shell: bash
         run: |
           python ./install.py ${{ needs.meta.outputs.tag }}
 
-          if [[ "${{ matrix.os }}" != "android" ]]; then
-            if [ -d "MFA" ]; then
-              echo "Copying MFA files to install directory..."
-              mkdir -p install
-              rsync -av --ignore-existing MFA/ install/
-            else
-              echo "MFA directory not found, skipping copy."
-            fi
-          else
-            echo "Skipping copy MFA for Android."
-          fi
-      
+      - name: Download MFAWPF
+        if: ${{ matrix.os == 'win' }}
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: SweetSmellFox/MFAWPF
+          fileName: "MFAWPF*"
+          latest: true
+          out-file-path: "MFAWPF"
+          extract: true
+
+      - name: Install MFAWPF
+        if: ${{ matrix.os == 'win' }}
+        shell: bash
+        run: |
+          cp MFAWPF/MFAWPF.exe install
+
       - uses: actions/upload-artifact@v4
         with:
-          name: MAA5732-${{ matrix.os }}-${{ matrix.arch }}
+          name: Maa5732-${{ matrix.os }}-${{ matrix.arch }}
           path: "install"
 
   release:
@@ -132,3 +117,4 @@ jobs:
         with:
           files: assets/*
           tag_name: ${{ needs.meta.outputs.tag }}
+          generate_release_notes: true
