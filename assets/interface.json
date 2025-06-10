@@ -1,10 +1,10 @@
 {
     "name": "MAA5732",
-    "version": "v1.3.2",
     "url": "https://github.com/megmandH/MAA5732",
+    "custom_title": "夜莺助手",
     "controller": [
         {
-            "name": "ADB 默认方式",
+            "name": "安卓端",
             "type": "Adb"
         }
     ],
@@ -12,13 +12,6 @@
         {
             "name": "官服",
             "path": "{PROJECT_DIR}/resource/base"
-        },
-        {
-            "name": "B 服",
-            "path": [
-                "{PROJECT_DIR}/resource/base",
-                "{PROJECT_DIR}/resource/bilibili"
-            ]
         }
     ],
     "agent": {
